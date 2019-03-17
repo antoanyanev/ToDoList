@@ -27,8 +27,14 @@ namespace Calendar {
                 " ApplicationIntent = ReadWrite; " +
                 "MultiSubnetFailover = False");
 
-        public Form1() {
+        public Form1()
+        {
             InitializeComponent();
+            GetLoginComponents();
+        }
+
+        private void GetLoginComponents()
+        {
             MyButtons = new List<Button>();
             MyLabels = new List<Label>();
             MyTextBoxes = new List<TextBox>();
