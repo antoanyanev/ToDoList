@@ -34,6 +34,7 @@
             this.GenderBox = new System.Windows.Forms.TextBox();
             this.CityBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.ErrorLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameLabel
@@ -87,6 +88,7 @@
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(100, 20);
             this.NameBox.TabIndex = 5;
+            this.NameBox.TextChanged += new System.EventHandler(this.NameBox_TextChanged);
             // 
             // SurnameBox
             // 
@@ -126,9 +128,19 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // ErrorLabel
+            // 
+            this.ErrorLabel.AutoSize = true;
+            this.ErrorLabel.Location = new System.Drawing.Point(234, 210);
+            this.ErrorLabel.Name = "ErrorLabel";
+            this.ErrorLabel.Size = new System.Drawing.Size(35, 13);
+            this.ErrorLabel.TabIndex = 11;
+            this.ErrorLabel.Text = "label1";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(625, 508);
+            this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.CityBox);
             this.Controls.Add(this.GenderBox);
@@ -141,6 +153,7 @@
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.NameLabel);
             this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,17 +172,18 @@
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.Label SurnameLabel;
-        private System.Windows.Forms.Label BirthdateLabel;
-        private System.Windows.Forms.Label GenderLabel;
-        private System.Windows.Forms.Label CityLabel;
-        private System.Windows.Forms.TextBox NameBox;
-        private System.Windows.Forms.TextBox SurnameBox;
-        private System.Windows.Forms.TextBox BirthdateBox;
-        private System.Windows.Forms.TextBox GenderBox;
-        private System.Windows.Forms.TextBox CityBox;
-        private System.Windows.Forms.Button LoginButton;
+        public System.Windows.Forms.Label ErrorLabel;
+        public System.Windows.Forms.Label NameLabel;
+        public System.Windows.Forms.Label SurnameLabel;
+        public System.Windows.Forms.Label BirthdateLabel;
+        public System.Windows.Forms.Label GenderLabel;
+        public System.Windows.Forms.Label CityLabel;
+        public System.Windows.Forms.TextBox NameBox;
+        public System.Windows.Forms.TextBox SurnameBox;
+        public System.Windows.Forms.TextBox BirthdateBox;
+        public System.Windows.Forms.TextBox GenderBox;
+        public System.Windows.Forms.TextBox CityBox;
+        public System.Windows.Forms.Button LoginButton;
     }
 }
 
