@@ -8,94 +8,124 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calendar {
-    public class Login {
-        Form1 form;
-        List<TextBox> textBoxes;
-        List<Label> labels;
-        List<Button> buttons;
+    public class Login{
+        List<TextBox> MyTextBoxes;
+        List<Label> MyLabels;
+        List<Button> MyButtons;
         
-        public Login() {
-            textBoxes = new List<TextBox>();
-            labels = new List<Label>();
-            buttons = new List<Button>();
-            
-            foreach (var box in form.Controls.OfType<TextBox>())
+        public Login(List<Button> buttons, List<Label> labels, List<TextBox> textBoxes) {
+            this.MyTextBoxes = new List<TextBox>();
+            this.MyLabels = new List<Label>();
+            this.MyButtons = new List<Button>();
+
+            foreach (var button in buttons)
             {
-                textBoxes.Add(box);
+                MyButtons.Add(new Button());
             }
 
-            foreach (var label in form.Controls.OfType<Label>())
+            foreach (var label in labels)
             {
-                labels.Add(label);
+                MyLabels.Add(new Label());
             }
 
-            foreach (var button in form.Controls.OfType<Button>())
+            foreach (var textBox in textBoxes)
             {
-                buttons.Add(button);
+                MyTextBoxes.Add(new TextBox());
             }
 
-            HideContent();
-        }
-
-        public void CreateUser() {
-            form.dbCon.Open();
-
-            using (form.dbCon) {
-                string[] info = new string[] { form.NameBox.Text, form.SurnameBox.Text, form.BirthdateBox.Text, form.GenderBox.Text, form.CityBox.Text };
-
-                if (CheckNull(info) && CheckDate(info[2])) {
-                    string values = $"VALUES ('{info[0]}', '{info[1]}', '{info[2]}', '{info[3]}', '{info[4]}')";
-
-                    SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, form.dbCon);
-                    command.ExecuteScalar();
-                }
+            for (int i = 0; i < buttons.Count; i++)
+            {
+                MyButtons[i] = buttons[i];
             }
 
-            form.dbCon.Close();
-        }
-
-        private bool CheckNull(string[] input) {
-            bool ok = true;
-
-            foreach (string str in input) {
-                if (str == String.Empty) {
-                    ok = false;
-                    form.ErrorLabel.Text = "All fields should not be null!";
-                    break;
-                }
+            for (int i = 0; i < labels.Count; i++)
+            {
+                MyLabels[i] = labels[i];
             }
 
-            return ok;
-        }
-
-        private bool CheckDate(string input) {
-            bool ok = true;
-
-            Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
-
-            MatchCollection matches = rx.Matches(input);
-
-            if (matches.Count != 1) {
-                form.ErrorLabel.Text = "Invalid Date!";
-                ok = false;
+            for (int i = 0; i < textBoxes.Count; i++)
+            {
+                MyTextBoxes[i] = textBoxes[i];
             }
 
-            return ok;
+
+            //foreach (var box in Controls.OfType<TextBox>())
+            //{
+            //    textBoxes.Add(box);
+            //}
+
+            //foreach (var label in Controls.OfType<Label>())
+            //{
+            //    labels.Add(label);
+            //}
+
+            //foreach (var button in Controls.OfType<Button>())
+            //{
+            //    buttons.Add(button);
+            //}
+
+            ShowContent();
         }
+
+        //public void CreateUser() {
+        //    dbCon.Open();
+
+        //    using (dbCon) {
+        //        string[] info = new string[] { NameBox.Text, SurnameBox.Text, BirthdateBox.Text, GenderBox.Text, CityBox.Text };
+
+        //        if (CheckNull(info) && CheckDate(info[2])) {
+        //            string values = $"VALUES ('{info[0]}', '{info[1]}', '{info[2]}', '{info[3]}', '{info[4]}')";
+
+        //            SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
+        //            command.ExecuteScalar();
+        //        }
+        //    }
+
+        //    dbCon.Close();
+        //}
+
+        //private bool CheckNull(string[] input) {
+        //    bool ok = true;
+
+        //    foreach (string str in input) {
+        //        if (str == String.Empty) {
+        //            ok = false;
+        //            ErrorLabel.Text = "All fields should not be null!";
+        //            break;
+        //        }
+        //    }
+
+        //    return ok;
+        //}
+
+        //private bool CheckDate(string input) {
+        //    bool ok = true;
+
+        //    Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
+
+        //    MatchCollection matches = rx.Matches(input);
+
+        //    if (matches.Count != 1) {
+        //        ErrorLabel.Text = "Invalid Date!";
+        //        ok = false;
+        //    }
+
+        //    return ok;
+        //}
 
         public void HideContent()
         {
-            foreach (TextBox box in textBoxes)
+            foreach (TextBox box in MyTextBoxes)
             {
                 box.Hide();
             }
 
-            foreach (Label label in labels)
+            foreach (Label label in MyLabels)
             {
                 label.Hide();
             }
 
-            foreach (Button button in buttons)
+            foreach (Button button in MyButtons)
             {
                 button.Hide();
             }
@@ -103,17 +133,17 @@ namespace Calendar {
 
         public void ShowContent()
         {
-            foreach (TextBox box in textBoxes)
+            foreach (TextBox box in MyTextBoxes)
             {
                 box.Show();
             }
 
-            foreach (Label label in labels)
+            foreach (Label label in MyLabels)
             {
                 label.Show();
             }
 
-            foreach (Button button in buttons)
+            foreach (Button button in MyButtons)
             {
                 button.Show();
             }
