@@ -35,13 +35,14 @@
             this.CityBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.ErrorLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
             this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabel.Location = new System.Drawing.Point(199, 120);
+            this.NameLabel.Location = new System.Drawing.Point(199, 126);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(52, 21);
             this.NameLabel.TabIndex = 0;
@@ -51,7 +52,7 @@
             // 
             this.SurnameLabel.AutoSize = true;
             this.SurnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.SurnameLabel.Location = new System.Drawing.Point(199, 157);
+            this.SurnameLabel.Location = new System.Drawing.Point(199, 162);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(73, 21);
             this.SurnameLabel.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             this.BirthdateLabel.AutoSize = true;
             this.BirthdateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.BirthdateLabel.Location = new System.Drawing.Point(199, 193);
+            this.BirthdateLabel.Location = new System.Drawing.Point(199, 197);
             this.BirthdateLabel.Name = "BirthdateLabel";
             this.BirthdateLabel.Size = new System.Drawing.Size(73, 21);
             this.BirthdateLabel.TabIndex = 2;
@@ -71,7 +72,7 @@
             // 
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.GenderLabel.Location = new System.Drawing.Point(199, 226);
+            this.GenderLabel.Location = new System.Drawing.Point(199, 232);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(61, 21);
             this.GenderLabel.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             this.CityLabel.AutoSize = true;
             this.CityLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CityLabel.Location = new System.Drawing.Point(199, 264);
+            this.CityLabel.Location = new System.Drawing.Point(199, 267);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Size = new System.Drawing.Size(37, 21);
             this.CityLabel.TabIndex = 4;
@@ -147,9 +148,20 @@
             this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.ErrorLabel.TabIndex = 11;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label1.Location = new System.Drawing.Point(407, 197);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 21);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "dd/mm/yyyy";
+            // 
             // Form1
             // 
             this.ClientSize = new System.Drawing.Size(625, 508);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.CityBox);
@@ -194,6 +206,7 @@
         public System.Windows.Forms.TextBox GenderBox;
         public System.Windows.Forms.TextBox CityBox;
         public System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.Label label1;
     }
 }
 

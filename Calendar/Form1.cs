@@ -17,16 +17,6 @@ namespace Calendar {
         List<Button> MyButtons;
         Login login;
 
-        public SqlConnection dbCon = new SqlConnection(
-                "Data Source = (localdb)\\MSSQLLocalDB; " +
-                "Initial Catalog = Data; " +
-                "Integrated Security = True; " +
-                "Connect Timeout = 30; " +
-                "Encrypt = False; " +
-                "TrustServerCertificate = True;" +
-                "ApplicationIntent = ReadWrite; " +
-                "MultiSubnetFailover = False");
-
         public Form1() {
             InitializeComponent();
             GetLoginComponents();

@@ -16,6 +16,8 @@ namespace Calendar {
         List<Label> MyLabels;
         List<Button> MyButtons;
 
+        Connection con;
+
         string connectionString;
 
         public Login(List<Button> buttons, List<Label> labels, List<TextBox> textBoxes) {
@@ -38,9 +40,10 @@ namespace Calendar {
 
             using (dbCon) {
                 List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).Reverse().ToList());
+                string date = ReformatDate(info[2]);
 
-                if (CheckNull(info) && CheckDate(info[2])) {
-                    string values = $"VALUES ('{info[0]}', '{info[1]}', '{info[2]}', '{info[3]}', '{info[4]}')";
+                if (CheckNull(info) && CheckDate(date)) {
+                    string values = $"VALUES ('{info[0]}', '{info[1]}', '{date}', '{info[3]}', '{info[4]}')";
 
                     SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
                     command.ExecuteScalar();
@@ -48,6 +51,8 @@ namespace Calendar {
                     HideContent();
                 }
             }
+
+            Console.WriteLine(ReformatDate("04/07/2001"));
 
             dbCon.Close();
         }
@@ -69,7 +74,7 @@ namespace Calendar {
         private bool CheckDate(string input) {
             bool ok = true;
 
-            Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
+            Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"); 
 
             MatchCollection matches = rx.Matches(input);
 
@@ -138,7 +143,6 @@ namespace Calendar {
         }
 
         public string GetConnectionString(string file) {
-            Connection con;
 
             using (StreamReader r = new StreamReader(file)) {
                 string json = r.ReadToEnd();
@@ -146,6 +150,12 @@ namespace Calendar {
             }
 
             return con.ConnectionString;
+        }
+
+        public string ReformatDate(string input) {
+            string date = String.Join("-", input.Split('/').Reverse().ToArray());
+
+            return date;
         }
     }
 }
