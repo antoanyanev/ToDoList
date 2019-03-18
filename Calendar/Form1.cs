@@ -27,32 +27,28 @@ namespace Calendar {
                 "ApplicationIntent = ReadWrite; " +
                 "MultiSubnetFailover = False");
 
-        public Form1()
-        {
+        public Form1() {
             InitializeComponent();
             GetLoginComponents();
         }
 
-        private void GetLoginComponents()
-        {
+        private void GetLoginComponents() {
             MyButtons = new List<Button>();
             MyLabels = new List<Label>();
             MyTextBoxes = new List<TextBox>();
 
-            foreach (var button in Controls.OfType<Button>())
-            {
+            foreach (var button in Controls.OfType<Button>()) {
                 MyButtons.Add(button);
             }
 
-            foreach (var textBox in Controls.OfType<TextBox>())
-            {
+            foreach (var textBox in Controls.OfType<TextBox>()) {
                 MyTextBoxes.Add(textBox);
             }
 
-            foreach (var label in Controls.OfType<Label>())
-            {
+            foreach (var label in Controls.OfType<Label>()) {
                 MyLabels.Add(label);
             }
+
             login = new Login(MyButtons, MyLabels, MyTextBoxes);
         }
 
@@ -60,13 +56,11 @@ namespace Calendar {
             login.CreateUser();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) {
 
         }
 
-        private void NameBox_TextChanged(object sender, EventArgs e)
-        {
+        private void NameBox_TextChanged(object sender, EventArgs e) {
 
         }
     }
