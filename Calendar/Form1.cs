@@ -24,7 +24,7 @@ namespace Calendar {
                 "Connect Timeout = 30; " +
                 "Encrypt = False; " +
                 "TrustServerCertificate = True;" +
-                " ApplicationIntent = ReadWrite; " +
+                "ApplicationIntent = ReadWrite; " +
                 "MultiSubnetFailover = False");
 
         public Form1()
@@ -57,7 +57,7 @@ namespace Calendar {
         }
 
         private void LoginButton_Click(object sender, EventArgs e) {
-            login.HideContent();
+            login.CreateUser();
         }
 
         private void Form1_Load(object sender, EventArgs e)

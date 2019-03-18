@@ -12,7 +12,9 @@ namespace Calendar {
         List<TextBox> MyTextBoxes;
         List<Label> MyLabels;
         List<Button> MyButtons;
+
         
+
         public Login(List<Button> buttons, List<Label> labels, List<TextBox> textBoxes) {
             this.MyTextBoxes = new List<TextBox>();
             this.MyLabels = new List<Label>();
@@ -48,70 +50,67 @@ namespace Calendar {
                 MyTextBoxes[i] = textBoxes[i];
             }
 
-
-            //foreach (var box in Controls.OfType<TextBox>())
-            //{
-            //    textBoxes.Add(box);
-            //}
-
-            //foreach (var label in Controls.OfType<Label>())
-            //{
-            //    labels.Add(label);
-            //}
-
-            //foreach (var button in Controls.OfType<Button>())
-            //{
-            //    buttons.Add(button);
-            //}
-
             ShowContent();
+            Console.WriteLine(MyTextBoxes.Where(x => x.Name == "SurnameBox").First().Text);
         }
 
-        //public void CreateUser() {
-        //    dbCon.Open();
+        public void CreateUser() {
+            SqlConnection dbCon = new SqlConnection(
+                "Data Source = (localdb)\\MSSQLLocalDB; " +
+                "Initial Catalog = Data; " +
+                "Integrated Security = True; " +
+                "Connect Timeout = 30; " +
+                "Encrypt = False; " +
+                "TrustServerCertificate = True;" +
+                "ApplicationIntent = ReadWrite; " +
+                "MultiSubnetFailover = False");
 
-        //    using (dbCon) {
-        //        string[] info = new string[] { NameBox.Text, SurnameBox.Text, BirthdateBox.Text, GenderBox.Text, CityBox.Text };
+            dbCon.Open();
 
-        //        if (CheckNull(info) && CheckDate(info[2])) {
-        //            string values = $"VALUES ('{info[0]}', '{info[1]}', '{info[2]}', '{info[3]}', '{info[4]}')";
+            using (dbCon) {
+                string[] info = new string[] { MyTextBoxes.Where(x => x.Name == "NameBox").First().Text, MyTextBoxes.Where(x => x.Name == "SurnameBox").First().Text, MyTextBoxes.Where(x => x.Name == "BirthdateBox").First().Text, MyTextBoxes.Where(x => x.Name == "GenderBox").First().Text, MyTextBoxes.Where(x => x.Name == "CityBox").First().Text };
 
-        //            SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
-        //            command.ExecuteScalar();
-        //        }
-        //    }
+                if (CheckNull(info) && CheckDate(info[2])) {
+                    string values = $"VALUES ('{info[0]}', '{info[1]}', '{info[2]}', '{info[3]}', '{info[4]}')";
 
-        //    dbCon.Close();
-        //}
+                    SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
+                    command.ExecuteScalar();
 
-        //private bool CheckNull(string[] input) {
-        //    bool ok = true;
+                    HideContent();
+                }
+            }
 
-        //    foreach (string str in input) {
-        //        if (str == String.Empty) {
-        //            ok = false;
-        //            ErrorLabel.Text = "All fields should not be null!";
-        //            break;
-        //        }
-        //    }
+            dbCon.Close();
+        }
 
-        //    return ok;
-        //}
+        private bool CheckNull(string[] input) {
+            bool ok = true;
 
-        //private bool CheckDate(string input) {
-        //    bool ok = true;
+            foreach (string str in input) {
+                if (str == String.Empty) {
+                    ok = false;
+                    MyLabels.Where(x => x.Name == "ErrorLabel").First().Text = "All fields should not be null!";
+                    break;
+                }
+            }
 
-        //    Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
+            return ok;
+        }
 
-        //    MatchCollection matches = rx.Matches(input);
+        private bool CheckDate(string input) {
+            bool ok = true;
 
-        //    if (matches.Count != 1) {
-        //        ErrorLabel.Text = "Invalid Date!";
-        //        ok = false;
-        //    }
+            Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))");
 
-        //    return ok;
-        //}
+            MatchCollection matches = rx.Matches(input);
+
+            if (matches.Count != 1) {
+                MyLabels.Where(x => x.Name == "ErrorLabel").First().Text = "Invalid Date!";
+                ok = false;
+            }
+
+            return ok;
+        }
 
         public void HideContent()
         {

@@ -133,9 +133,8 @@
             this.ErrorLabel.AutoSize = true;
             this.ErrorLabel.Location = new System.Drawing.Point(234, 210);
             this.ErrorLabel.Name = "ErrorLabel";
-            this.ErrorLabel.Size = new System.Drawing.Size(35, 13);
+            this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.ErrorLabel.TabIndex = 11;
-            this.ErrorLabel.Text = "label1";
             // 
             // Form1
             // 
