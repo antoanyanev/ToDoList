@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Calendar {
     public class Login {
@@ -13,7 +16,7 @@ namespace Calendar {
         List<Label> MyLabels;
         List<Button> MyButtons;
 
-
+        string connectionString;
 
         public Login(List<Button> buttons, List<Label> labels, List<TextBox> textBoxes) {
             this.MyTextBoxes = new List<TextBox>();
@@ -23,19 +26,13 @@ namespace Calendar {
             IntitializeArrays(buttons, labels, textBoxes);
             CopyComponents(buttons, labels, textBoxes);
 
+            connectionString = GetConnectionString("Connection.json");
+
             ShowContent();
         }
 
         public void CreateUser() {
-            SqlConnection dbCon = new SqlConnection(
-                "Data Source = (localdb)\\MSSQLLocalDB; " +
-                "Initial Catalog = Data; " +
-                "Integrated Security = True; " +
-                "Connect Timeout = 30; " +
-                "Encrypt = False; " +
-                "TrustServerCertificate = True;" +
-                "ApplicationIntent = ReadWrite; " +
-                "MultiSubnetFailover = False");
+            SqlConnection dbCon = new SqlConnection(connectionString);
 
             dbCon.Open();
 
@@ -139,5 +136,17 @@ namespace Calendar {
                 button.Show();
             }
         }
+
+        public string GetConnectionString(string file) {
+            Connection con;
+
+            using (StreamReader r = new StreamReader(file)) {
+                string json = r.ReadToEnd();
+                con = JsonConvert.DeserializeObject<Connection>(json);
+            }
+
+            return con.ConnectionString;
+        }
     }
 }
+
