@@ -12,42 +12,25 @@ using System.Text.RegularExpressions;
 
 namespace Calendar {
     public partial class Form1 : Form {
-        List<TextBox> MyTextBoxes;
-        List<Label> MyLabels;
-        List<Button> MyButtons;
         Login login;
+
+        Control buttonlogin;
 
         public Form1() {
             InitializeComponent();
-            GetLoginComponents();
+            login = new Login();
         }
 
-        private void GetLoginComponents() {
-            MyButtons = new List<Button>();
-            MyLabels = new List<Label>();
-            MyTextBoxes = new List<TextBox>();
-
-            foreach (var button in Controls.OfType<Button>()) {
-                MyButtons.Add(button);
-            }
-
-            foreach (var textBox in Controls.OfType<TextBox>()) {
-                MyTextBoxes.Add(textBox);
-            }
-
-            foreach (var label in Controls.OfType<Label>()) {
-                MyLabels.Add(label);
-            }
-
-            login = new Login(MyButtons, MyLabels, MyTextBoxes);
-        }
-
-        private void LoginButton_Click(object sender, EventArgs e) {
+        private void buttonLogin_Click(object sender, EventArgs e) {
             login.CreateUser();
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            List<Control> controls = login.getControls();
 
+            Controls.AddRange(controls.ToArray());
+
+            buttonlogin = controls.Last();
         }
 
         private void NameBox_TextChanged(object sender, EventArgs e) {
