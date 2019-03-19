@@ -44,7 +44,7 @@
             this.NameLabel.AutoSize = true;
             this.NameLabel.BackColor = System.Drawing.Color.Transparent;
             this.NameLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabel.Location = new System.Drawing.Point(166, 164);
+            this.NameLabel.Location = new System.Drawing.Point(329, 162);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(52, 21);
             this.NameLabel.TabIndex = 0;
@@ -55,7 +55,7 @@
             this.SurnameLabel.AutoSize = true;
             this.SurnameLabel.BackColor = System.Drawing.Color.Transparent;
             this.SurnameLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.SurnameLabel.Location = new System.Drawing.Point(166, 200);
+            this.SurnameLabel.Location = new System.Drawing.Point(329, 198);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(73, 21);
             this.SurnameLabel.TabIndex = 1;
@@ -66,7 +66,7 @@
             this.BirthdateLabel.AutoSize = true;
             this.BirthdateLabel.BackColor = System.Drawing.Color.Transparent;
             this.BirthdateLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.BirthdateLabel.Location = new System.Drawing.Point(166, 235);
+            this.BirthdateLabel.Location = new System.Drawing.Point(329, 233);
             this.BirthdateLabel.Name = "BirthdateLabel";
             this.BirthdateLabel.Size = new System.Drawing.Size(73, 21);
             this.BirthdateLabel.TabIndex = 2;
@@ -77,7 +77,7 @@
             this.GenderLabel.AutoSize = true;
             this.GenderLabel.BackColor = System.Drawing.Color.Transparent;
             this.GenderLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.GenderLabel.Location = new System.Drawing.Point(166, 270);
+            this.GenderLabel.Location = new System.Drawing.Point(329, 268);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(61, 21);
             this.GenderLabel.TabIndex = 3;
@@ -88,7 +88,7 @@
             this.CityLabel.AutoSize = true;
             this.CityLabel.BackColor = System.Drawing.Color.Transparent;
             this.CityLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CityLabel.Location = new System.Drawing.Point(166, 305);
+            this.CityLabel.Location = new System.Drawing.Point(329, 303);
             this.CityLabel.Name = "CityLabel";
             this.CityLabel.Size = new System.Drawing.Size(37, 21);
             this.CityLabel.TabIndex = 4;
@@ -97,7 +97,7 @@
             // NameBox
             // 
             this.NameBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.NameBox.Location = new System.Drawing.Point(256, 161);
+            this.NameBox.Location = new System.Drawing.Point(419, 159);
             this.NameBox.Name = "NameBox";
             this.NameBox.Size = new System.Drawing.Size(100, 29);
             this.NameBox.TabIndex = 5;
@@ -106,7 +106,7 @@
             // SurnameBox
             // 
             this.SurnameBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.SurnameBox.Location = new System.Drawing.Point(256, 197);
+            this.SurnameBox.Location = new System.Drawing.Point(419, 195);
             this.SurnameBox.Name = "SurnameBox";
             this.SurnameBox.Size = new System.Drawing.Size(100, 29);
             this.SurnameBox.TabIndex = 6;
@@ -114,7 +114,7 @@
             // BirthdateBox
             // 
             this.BirthdateBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.BirthdateBox.Location = new System.Drawing.Point(256, 232);
+            this.BirthdateBox.Location = new System.Drawing.Point(419, 230);
             this.BirthdateBox.Name = "BirthdateBox";
             this.BirthdateBox.Size = new System.Drawing.Size(100, 29);
             this.BirthdateBox.TabIndex = 7;
@@ -122,7 +122,7 @@
             // GenderBox
             // 
             this.GenderBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.GenderBox.Location = new System.Drawing.Point(256, 267);
+            this.GenderBox.Location = new System.Drawing.Point(419, 265);
             this.GenderBox.Name = "GenderBox";
             this.GenderBox.Size = new System.Drawing.Size(100, 29);
             this.GenderBox.TabIndex = 8;
@@ -130,7 +130,7 @@
             // CityBox
             // 
             this.CityBox.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.CityBox.Location = new System.Drawing.Point(256, 302);
+            this.CityBox.Location = new System.Drawing.Point(419, 300);
             this.CityBox.Name = "CityBox";
             this.CityBox.Size = new System.Drawing.Size(100, 29);
             this.CityBox.TabIndex = 9;
@@ -138,7 +138,7 @@
             // LoginButton
             // 
             this.LoginButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginButton.Location = new System.Drawing.Point(267, 342);
+            this.LoginButton.Location = new System.Drawing.Point(430, 340);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 10;
@@ -149,7 +149,7 @@
             // ErrorLabel
             // 
             this.ErrorLabel.AutoSize = true;
-            this.ErrorLabel.Location = new System.Drawing.Point(300, 352);
+            this.ErrorLabel.Location = new System.Drawing.Point(463, 350);
             this.ErrorLabel.Name = "ErrorLabel";
             this.ErrorLabel.Size = new System.Drawing.Size(0, 13);
             this.ErrorLabel.TabIndex = 11;
@@ -159,7 +159,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(374, 235);
+            this.label1.Location = new System.Drawing.Point(537, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 21);
             this.label1.TabIndex = 12;
@@ -168,7 +168,7 @@
             // Form1
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(584, 561);
+            this.ClientSize = new System.Drawing.Size(898, 561);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ErrorLabel);
             this.Controls.Add(this.LoginButton);
