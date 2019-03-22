@@ -1,1 +1,3 @@
-﻿select * from Users;
+﻿use Data;
+
+select * from Users;
