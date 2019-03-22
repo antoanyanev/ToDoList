@@ -53,7 +53,6 @@ namespace Calendar {
         private string connectionString;
 
         public Login() {
-            toDo = new ToDo();
 
             connectionString = GetConnectionString("Connection.json");
 
@@ -246,7 +245,6 @@ namespace Calendar {
 
         public List<Control> getControls(ToDo todo) {
             this.toDo = todo;
-
 
             List<Control> controls = new List<Control>();
 

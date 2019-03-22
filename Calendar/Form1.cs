@@ -20,7 +20,7 @@ namespace Calendar {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.AutoScroll = true;
             login = new Login();
-            toDo = new ToDo();
+            toDo = new ToDo(this);
             
         }
 
