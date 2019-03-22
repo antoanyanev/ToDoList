@@ -54,6 +54,7 @@ namespace Calendar {
             IntitializeArrays();
             SetControlsPosition(330, 160, 420, 160);
             SetControlsSize(60, 20);
+            SetLabelsTransparency();
             ShowContent();
         }
 
@@ -62,7 +63,7 @@ namespace Calendar {
             dbCon.Open();
 
             using (dbCon) {
-                List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).Reverse().ToList());
+                List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).ToList());
                 string date = ReformatDate(info[2]);
 
                 if (CheckNull(info) && CheckDate(date)) {
@@ -116,6 +117,7 @@ namespace Calendar {
             labelCity = new Label();
             labelFormat = new Label();
             labelError = new Label();
+            labelError.AutoSize = true;
 
             // Text Boxes //
 
@@ -128,6 +130,7 @@ namespace Calendar {
             // Button //
 
             buttonLogin = new Button();
+            buttonLogin.Click += Clicked;
         }
 
         private void IntitializeArrays() {
@@ -164,7 +167,7 @@ namespace Calendar {
                 textBox.Size = new Size(x, y);
             }
 
-            MyButtons[0].Size = new Size(x, y);
+            MyButtons[0].Size = new Size(x, y + 5);
         }
 
         private void SetControlsText() {
@@ -175,8 +178,16 @@ namespace Calendar {
             labelCity.Text = "City";
             labelFormat.Text = "dd/mm/yyyy";
             labelError.Text = "";
+            labelError.Name = "labelError";
 
             buttonLogin.Text = "Login";
+            buttonLogin.Name = "LoginButton";
+        }
+
+        private void SetLabelsTransparency() {
+            for (int i = 0; i < MyLabels.Count; i++) {
+                MyLabels[i].BackColor = System.Drawing.Color.Transparent;
+            }
         }
 
         private bool CheckNull(List<string> input) {
@@ -218,9 +229,7 @@ namespace Calendar {
         }
 
         public string ReformatDate(string input) {
-            string date = String.Join("-", input.Split('/').Reverse().ToArray());
-
-            return date;
+            return String.Join("-", input.Split('/').Reverse().ToArray());
         }
 
         public List<Control> getControls() {
@@ -231,6 +240,10 @@ namespace Calendar {
             controls.AddRange(MyButtons);
 
             return controls;
+        }
+
+        public void Clicked(object sender, EventArgs e) {
+            CreateUser();
         }
     }
 }
