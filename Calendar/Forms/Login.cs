@@ -13,6 +13,16 @@ using System.Drawing;
 
 namespace Calendar {
     public class Login {
+
+        ToDo toDo;
+
+        private const int sizeX = 60;
+        private const int sizeY = 20;
+        private const int firstLabelX = 80;
+        private const int firstLabelAndBoxY = 160;
+        private const int firstTextBoxX = 170;
+
+        
         // <----- Labels -----> //
 
         private Label labelName;
@@ -39,10 +49,12 @@ namespace Calendar {
         List<Label> MyLabels;
         List<Button> MyButtons;
 
-        Connection con;
-        string connectionString;
+        private Connection con;
+        private string connectionString;
 
         public Login() {
+            toDo = new ToDo();
+
             connectionString = GetConnectionString("Connection.json");
 
             this.MyTextBoxes = new List<TextBox>();
@@ -52,8 +64,8 @@ namespace Calendar {
             GenerateControls();
             SetControlsText();
             IntitializeArrays();
-            SetControlsPosition(330, 160, 420, 160);
-            SetControlsSize(60, 20);
+            SetControlsPosition(firstLabelX, firstLabelAndBoxY, firstTextBoxX, firstLabelAndBoxY);
+            SetControlsSize(sizeX, sizeY);
             SetLabelsTransparency();
             ShowContent();
         }
@@ -152,10 +164,10 @@ namespace Calendar {
                 boxStartY += 30;
             }
 
-            MyLabels[5].Location = new Point(530, 220);  // format
-            MyLabels[6].Location = new Point(530, 340);  // error
+            MyLabels[5].Location = new Point(250, 220);  // format
+            MyLabels[6].Location = new Point(190, 345);  // error
 
-            MyButtons[0].Location = new Point(420, 340);
+            MyButtons[0].Location = new Point(130, 340);
         }
 
         private void SetControlsSize(int x, int y) {
@@ -196,7 +208,7 @@ namespace Calendar {
             foreach (string str in input) {
                 if (str == String.Empty) {
                     ok = false;
-                    MyLabels.Where(x => x.Name == "labelError").First().Text = "No fields should be left empty!";
+                    MyLabels.Where(x => x.Name == "labelError").First().Text = "No empty fields!";
                     break;
                 }
             }
@@ -232,7 +244,10 @@ namespace Calendar {
             return String.Join("-", input.Split('/').Reverse().ToArray());
         }
 
-        public List<Control> getControls() {
+        public List<Control> getControls(ToDo todo) {
+            this.toDo = todo;
+
+
             List<Control> controls = new List<Control>();
 
             controls.AddRange(MyLabels);           
@@ -244,7 +259,9 @@ namespace Calendar {
 
         public void Clicked(object sender, EventArgs e) {
             CreateUser();
+            toDo.ShowContent();
         }
+
     }
 }
 
