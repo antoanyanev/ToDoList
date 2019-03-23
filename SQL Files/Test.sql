@@ -1,3 +1,3 @@
 ﻿use Data;
 
-DELETE FROM Tasks;
+select * from users;

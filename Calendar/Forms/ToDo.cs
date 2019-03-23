@@ -92,7 +92,7 @@ namespace Calendar {
             sb.Append(name + " ");
             sb.Append(surname + new string(' ', 50));
             sb.Append(city + " ");
-            sb.Append(GetWeather(city));
+            sb.Append(GetWeather(city) + "°C");
 
             labelInfo.Text = sb.ToString();
         }
@@ -298,8 +298,8 @@ namespace Calendar {
             MyLabels.Clear();
         }
 
-        private double GetWeather(string city) {
-            double temp;
+        private int GetWeather(string city) {
+            int temp;
             string url = url1 + city + url2;
 
             var webRequest = WebRequest.Create(url) as HttpWebRequest;
@@ -307,13 +307,17 @@ namespace Calendar {
             webRequest.ContentType = "application/json";
             webRequest.UserAgent = "Nothing";
 
-            using (var s = webRequest.GetResponse().GetResponseStream()) {
-                using (var sr = new StreamReader(s)) {
-                    string result = sr.ReadToEnd();
-                    int index = result.IndexOf("temp");
-                    temp = double.Parse(result.Substring(index + 6, 6));
-                    temp -= 273.15; // kelvin to degrees centigrade conversion
+            try {
+                using (var s = webRequest.GetResponse().GetResponseStream()) {
+                    using (var sr = new StreamReader(s)) {
+                        string result = sr.ReadToEnd();
+                        int index = result.IndexOf("temp");
+                        temp = int.Parse(result.Substring(index + 6, 3));
+                        temp -= 273; // kelvin to degrees centigrade conversion
+                    }
                 }
+            } catch (Exception e) {
+                temp = 0;
             }
 
             return temp;
