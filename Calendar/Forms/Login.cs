@@ -84,6 +84,7 @@ namespace Calendar {
                     command.ExecuteScalar();
 
                     HideContent();
+                    toDo.ShowContent();
                 }
             }
 
@@ -257,9 +258,8 @@ namespace Calendar {
 
         public void Clicked(object sender, EventArgs e) {
             CreateUser();
-            toDo.ShowContent();
+            toDo.UpdateInfo();
         }
-
     }
 }
 
