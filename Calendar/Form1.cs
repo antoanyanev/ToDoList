@@ -30,8 +30,8 @@ namespace Calendar {
             Controls.AddRange(controls.ToArray());
 
 
-            //login.HideContent();
-            //toDo.ShowContent();
+            login.HideContent();
+            toDo.ShowContent();
         }
     }
 }

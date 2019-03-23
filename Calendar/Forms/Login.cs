@@ -1,14 +1,18 @@
-﻿using System;
+﻿/*
+    This is the first app page
+    Use it to create your user and then login
+
+    Written by Antoan Yanev & Vladislav Milenkov
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Drawing;
 
 namespace Calendar {
