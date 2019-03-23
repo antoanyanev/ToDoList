@@ -13,17 +13,15 @@ using System.Drawing;
 
 namespace Calendar {
     public class Login {
+        ToDo toDo; // Creates a ToDo instanse to acces the Hide and Show methods
 
-        ToDo toDo;
-
-        private const int sizeX = 60;
-        private const int sizeY = 20;
-        private const int firstLabelX = 80;
-        private const int firstLabelAndBoxY = 160;
-        private const int firstTextBoxX = 170;
-
+        private const int sizeX = 60; // Defines the X size of the controls
+        private const int sizeY = 20; // Defines the Y size of the controls
+        private const int firstLabelX = 80; // Defines the starting X point of the labels
+        private const int firstLabelAndBoxY = 160; // Defines the starting Y point of the labels
+        private const int firstTextBoxX = 170; // Defines the starting X point of the text boxes
         
-        // <----- Labels -----> //
+        // Labels //
 
         private Label labelName;
         private Label labelSurname;
@@ -33,7 +31,7 @@ namespace Calendar {
         private Label labelFormat;
         private Label labelError;
 
-        // <----- Text Boxes -----> //
+        // Text Boxes //
 
         private TextBox textBoxName;
         private TextBox textBoxSurname;
@@ -41,18 +39,21 @@ namespace Calendar {
         private TextBox textBoxGender;
         private TextBox textBoxCity;
 
-        // <----- Button -----> //
+        // Buttons //
 
         private Button buttonLogin;
+
+        // All Coontrols Collections //
 
         List<TextBox> MyTextBoxes;
         List<Label> MyLabels;
         List<Button> MyButtons;
 
-        private Connection con;
-        private string connectionString;
+        private Connection con; // Connection type object used for parsing
+        private string connectionString; // Actual DB connection string
 
         public Login() {
+            // Initialize all global variables //
 
             connectionString = GetConnectionString("Connection.json");
 
@@ -60,16 +61,18 @@ namespace Calendar {
             this.MyLabels = new List<Label>();
             this.MyButtons = new List<Button>();
 
-            GenerateControls();
-            SetControlsText();
-            IntitializeArrays();
-            SetControlsPosition(firstLabelX, firstLabelAndBoxY, firstTextBoxX, firstLabelAndBoxY);
-            SetControlsSize(sizeX, sizeY);
-            SetLabelsTransparency();
-            ShowContent();
+            GenerateControls(); // Initialize all controls
+            SetControlsText(); // Set the text to the controls
+            IntitializeArrays(); // Add the controls to their corresponging collection
+            SetControlsPosition(firstLabelX, firstLabelAndBoxY, firstTextBoxX, firstLabelAndBoxY); // Place them on the screen
+            SetControlsSize(sizeX, sizeY); // Give them a size
+            SetLabelsTransparency(); // Make the Labels' BG colour tranapsrent
+            ShowContent(); // make all controls visible
         }
 
         public void CreateUser() {
+            // Opens a connection to the DB and after validations adds the user to the users Table
+
             SqlConnection dbCon = new SqlConnection(connectionString);
             dbCon.Open();
 
@@ -92,6 +95,8 @@ namespace Calendar {
         }
 
         public void HideContent() {
+            // Iterates over all controls and hides them
+
             foreach (TextBox box in MyTextBoxes) {
                 box.Hide();
             }
@@ -106,6 +111,8 @@ namespace Calendar {
         }
 
         public void ShowContent() {
+            // Iterates over all controls and displayes them
+
             foreach (TextBox box in MyTextBoxes) {
                 box.Show();
             }
@@ -120,6 +127,8 @@ namespace Calendar {
         }
 
         private void GenerateControls() {
+            // Initializes all controls
+
             // Labels //
 
             labelName = new Label();
@@ -146,6 +155,8 @@ namespace Calendar {
         }
 
         private void IntitializeArrays() {
+            // Adds all controls to their corresponding collection
+
             MyButtons.Add(buttonLogin);
 
             MyLabels.AddRange(new Label[] { labelName, labelSurname, labelBirthdate, labelGender, labelCity, labelFormat, labelError });
@@ -154,6 +165,8 @@ namespace Calendar {
         }
 
         private void SetControlsPosition(int textStartX, int textStartY, int boxStartX, int boxStartY) {
+            // Sets the position for every control element
+
             for (int i = 0; i < MyLabels.Count - 2; i++) {
                 MyLabels[i].Location = new Point(textStartX, textStartY);
                 textStartY += 30;
@@ -171,6 +184,8 @@ namespace Calendar {
         }
 
         private void SetControlsSize(int x, int y) {
+            // Sets the size for all controls
+
             for (int i = 0; i < MyLabels.Count; i++) {
                 MyLabels[i].Size = new Size(x, y);
             }
@@ -183,6 +198,8 @@ namespace Calendar {
         }
 
         private void SetControlsText() {
+            // Adds text to the controls if necessary
+
             labelName.Text = "Name";
             labelSurname.Text = "Surname";
             labelBirthdate.Text = "Birthdate";
@@ -197,12 +214,16 @@ namespace Calendar {
         }
 
         private void SetLabelsTransparency() {
+            // Makes the BG of all labels transparent
+
             for (int i = 0; i < MyLabels.Count; i++) {
                 MyLabels[i].BackColor = System.Drawing.Color.Transparent;
             }
         }
 
         private bool CheckNull(List<string> input) {
+            // Checks if any fields are left empty
+
             bool ok = true;
 
             foreach (string str in input) {
@@ -217,6 +238,8 @@ namespace Calendar {
         }
 
         private bool CheckDate(string input) {
+            // Checks if the birthdate is in the correct format
+
             bool ok = true;
             Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"); 
 
@@ -231,6 +254,7 @@ namespace Calendar {
         }
 
         public string GetConnectionString(string file) {
+            // Retrieves the DB connection string from the Connection.json file
 
             using (StreamReader r = new StreamReader(file)) {
                 string json = r.ReadToEnd();
@@ -241,10 +265,14 @@ namespace Calendar {
         }
 
         public string ReformatDate(string input) {
+            // Reformats the default DateTime format from yyyy-mm-dd to dd/mm/yyyy
+
             return String.Join("-", input.Split('/').Reverse().ToArray());
         }
 
         public List<Control> getControls(ToDo todo) {
+            // Returns a collection of all controls to be added to the Form Controls collection
+
             this.toDo = todo;
 
             List<Control> controls = new List<Control>();
@@ -257,9 +285,10 @@ namespace Calendar {
         }
 
         public void Clicked(object sender, EventArgs e) {
+            // Event handler bound to the login button
+
             CreateUser();
             toDo.UpdateInfo();
         }
     }
 }
-
