@@ -6,18 +6,16 @@
     Written by Antoan Yanev & Vladislav Milenkov
 */
 
-using System.Data.SqlClient;
-using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Drawing;
 using System.Collections.Generic;
 using System;
-using System.Net;
 using System.Threading;
 using Calendar.Controller;
 using Calendar.Forms;
+using Calendar.Models;
+using System.Linq;
 
 namespace Calendar {
     public class ToDo : Page {
@@ -59,41 +57,30 @@ namespace Calendar {
         public void UpdateInfo() {
             // Generates the message for the info label (top page label)
 
+            // Make sure there's a valid login in the Users table
+            // Otherwise, use the default values
+
+            var context = new DataEntities();
+            var user = context.Users.FirstOrDefault<User>();
+
             StringBuilder sb = new StringBuilder();
-            string name;
+            string name ;
             string surname;
             string city;
 
-            dbCon = new SqlConnection(connectionString);
-            dbCon.Open();
-
-            // Get all necessary info from the DB
-
-            using (dbCon) {
-                SqlCommand command = new SqlCommand("SELECT * FROM USERS");
-                command.Connection = dbCon;
-
-                SqlDataReader reader = command.ExecuteReader();
-                reader.Read();
-
-                // Make sure there's at least one valid login in the Users table
-                // Otherwise, use the default values
-
-                try {
-                    name = reader.GetString(1);
-                    surname = reader.GetString(2);
-                    city = reader.GetString(5).ToLower();
-                }
-                catch  {
-                    name = "";
-                    surname = "";
-                    city = "sofia";  // default city value
-                }
+            try
+            {
+                name = user.Name;
+                surname = user.Surname;
+                city = user.City;
             }
-
-            // Close the DB connection after use 
-
-            dbCon.Close();
+            catch
+            {
+                name = "";
+                surname = "";
+                city = "sofia";
+            }
+            
 
             // Put toghether separate parts of the message
             sb.Append(Services.GenerateGreeting());
@@ -156,24 +143,16 @@ namespace Calendar {
         public void AddTask(string content) {
             // Adds a new task to the dashboard
 
-            // Open a connection to DB to insert the new item
-
+            var context = new DataEntities1();
+            
             if (content != String.Empty) {
-                dbCon = new SqlConnection(connectionString);
-                dbCon.Open();
 
-                using (dbCon) {
-                    string values = $"VALUES ('{content}')";
+                var task = new Task() {
+                    Content = content
+                };
 
-                    SqlCommand command = new SqlCommand("INSERT INTO TASKS (Content)" + values, dbCon);
-                    command.Connection = dbCon;
-
-                    command.ExecuteScalar();
-                }
-
-                // Close the connection
-
-                dbCon.Close();
+                context.Tasks.Add(task);
+                context.SaveChanges();
             }
             // Update the local collection of tasks and display them again
 
@@ -184,23 +163,14 @@ namespace Calendar {
         public void FetchTasks() {
             // Retrieves all tasks from the DB table
 
-            dbCon = new SqlConnection(connectionString);
-            dbCon.Open();
+            var context = new DataEntities1();
+            var tasks = context.Tasks.ToList();
 
-            using (dbCon) {
-                SqlCommand command = new SqlCommand("SELECT * FROM TASKS");
-                command.Connection = dbCon;
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows) {
-                    while (reader.Read()) {
-                        labelNames.Add(reader.GetString(1));
-                    }
-                }
+            for (int i = 0; i < tasks.Count; i++)
+            {
+                labelNames.Add(tasks[i].Content);
             }
-
-            dbCon.Close();
+            
         }
 
         private void DeleteAllTasks() {
@@ -221,45 +191,28 @@ namespace Calendar {
             // Only execute deletion if yes has been selected
 
             if (result == DialogResult.Yes) {
-                dbCon = new SqlConnection(connectionString);
-                dbCon.Open();
+                var context = new DataEntities1();
 
-                using (dbCon) {
-                    SqlCommand command = new SqlCommand("DELETE FROM TASKS");
-                    command.Connection = dbCon;
-
-                    command.ExecuteScalar();
-                }
+                context.Tasks.RemoveRange(context.Tasks);
+                context.SaveChanges();
 
                 UpdateLabelsAndButtons();
-
-                dbCon.Close();
             }
         }
 
         private void DeleteTask(string content) {
             // Deletes a task from the DB based on it's content
 
-            // Open a DB connection
-            dbCon = new SqlConnection(connectionString);
-            dbCon.Open();
-
-            using (dbCon) {
-                SqlCommand command = new SqlCommand($"DELETE FROM TASKS WHERE CONTENT='{content}'");
-                command.Connection = dbCon;
-
-                command.ExecuteNonQuery();
-            }
-
+            var context = new DataEntities1();
+            context.Tasks.Remove(context.Tasks.Single(t => t.Content == content));
+            context.SaveChanges();
+            
             // Refresh Tasks
 
             UpdateLabelsAndButtons();
             FetchTasks();
             GenerateLabelsAndButtons();
 
-            // Close DB connection
-
-            dbCon.Close();
         }
 
         public void GenerateLabelsAndButtons() {

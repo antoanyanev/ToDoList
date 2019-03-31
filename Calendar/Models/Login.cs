@@ -5,26 +5,24 @@
     Written by Antoan Yanev & Vladislav Milenkov
 */
 
-using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.Drawing;
 using Calendar.Controller;
 using Calendar.Forms;
+using Calendar.Models;
 
-namespace Calendar {
-    public class Login : Page {
+namespace Calendar
+{
+    public class Login : Page
+    {
         private const int sizeX = 60; // Defines the X size of the controls
         private const int sizeY = 20; // Defines the Y size of the controls
         private const int firstLabelX = 80; // Defines the starting X point of the labels
         private const int firstLabelAndBoxY = 160; // Defines the starting Y point of the labels
         private const int firstTextBoxX = 170; // Defines the starting X point of the text boxes
-        
+
         // Labels //
 
         private Label labelName;
@@ -47,7 +45,8 @@ namespace Calendar {
 
         private Button buttonLogin;
 
-        public Login() : base() {
+        public Login() : base()
+        {
             // Initialize all global variables //
 
             GenerateControls(); // Initialize all controls
@@ -59,60 +58,75 @@ namespace Calendar {
             ShowContent(); // make all controls visible
         }
 
-        public void CreateUser() {
-            // Opens a connection to the DB and after validations adds the user to the Users Table
+        public bool CreateUser()
+        {
+            // Registers a valid user
 
-            SqlConnection dbCon = new SqlConnection(connectionString);
-            dbCon.Open();
+            List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).ToList());
+            string date = Services.ReformatDate(info[2]);
 
-            using (dbCon) {
-                List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).ToList());
-                string date = Services.ReformatDate(info[2]);
+            if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels))
+            {           
+                var context = new DataEntities();
+                var user = new User()
+                {
+                    Name = info[0],
+                    Surname = info[1],
+                    Birthdate = date,
+                    Gender = info[3],
+                    City = info[4]
+                };
+                
+                context.Users.Add(user);
+                context.SaveChanges();
 
-                if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels)) {
-                    string values = $"VALUES ('{info[0]}', '{info[1]}', '{date}', '{info[3]}', '{info[4]}')";
-
-                    SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
-                    command.ExecuteScalar();
-                }               
+                return true;
             }
-
-            dbCon.Close();
+            return false;
         }
 
-        public void HideContent() {
+        public void HideContent()
+        {
             // Iterates over all controls and hides them
 
-            foreach (TextBox box in MyTextBoxes) {
+            foreach (TextBox box in MyTextBoxes)
+            {
                 box.Hide();
             }
 
-            foreach (Label label in MyLabels) {
+            foreach (Label label in MyLabels)
+            {
                 label.Hide();
             }
 
-            foreach (Button button in MyButtons) {
+            foreach (Button button in MyButtons)
+            {
                 button.Hide();
             }
         }
 
-        public void ShowContent() {
+        public void ShowContent()
+        {
             // Iterates over all controls and displayes them
 
-            foreach (TextBox box in MyTextBoxes) {
+            foreach (TextBox box in MyTextBoxes)
+            {
                 box.Show();
             }
 
-            foreach (Label label in MyLabels) {
+            foreach (Label label in MyLabels)
+            {
                 label.Show();
             }
 
-            foreach (Button button in MyButtons) {
+            foreach (Button button in MyButtons)
+            {
                 button.Show();
             }
         }
 
-        private void GenerateControls() {
+        private void GenerateControls()
+        {
             // Initializes all controls
 
             // Labels //
@@ -139,7 +153,8 @@ namespace Calendar {
             buttonLogin = new Button();
         }
 
-        private void IntitializeArrays() {
+        private void IntitializeArrays()
+        {
             // Adds all controls to their corresponding collection
 
             MyButtons.Add(buttonLogin);
@@ -149,15 +164,18 @@ namespace Calendar {
             MyTextBoxes.AddRange(new TextBox[] { textBoxName, textBoxSurname, textBoxBirthdate, textBoxGender, textBoxCity });
         }
 
-        private void SetControlsPosition(int textStartX, int textStartY, int boxStartX, int boxStartY) {
+        private void SetControlsPosition(int textStartX, int textStartY, int boxStartX, int boxStartY)
+        {
             // Sets the position for every control element
 
-            for (int i = 0; i < MyLabels.Count - 2; i++) {
+            for (int i = 0; i < MyLabels.Count - 2; i++)
+            {
                 MyLabels[i].Location = new Point(textStartX, textStartY);
                 textStartY += 30;
             }
 
-            foreach (var textBox in MyTextBoxes) {
+            foreach (var textBox in MyTextBoxes)
+            {
                 textBox.Location = new Point(boxStartX, boxStartY);
                 boxStartY += 30;
             }
@@ -168,21 +186,25 @@ namespace Calendar {
             MyButtons[0].Location = new Point(130, 340);
         }
 
-        private void SetControlsSize(int x, int y) {
+        private void SetControlsSize(int x, int y)
+        {
             // Sets the size for all controls
 
-            for (int i = 0; i < MyLabels.Count; i++) {
+            for (int i = 0; i < MyLabels.Count; i++)
+            {
                 MyLabels[i].Size = new Size(x, y);
             }
 
-            foreach (var textBox in MyTextBoxes) {
+            foreach (var textBox in MyTextBoxes)
+            {
                 textBox.Size = new Size(x, y);
             }
 
             MyButtons[0].Size = new Size(x, y + 5);
         }
 
-        private void SetControlsText() {
+        private void SetControlsText()
+        {
             // Adds text to the controls if necessary
 
             labelName.Text = "Name";
@@ -198,20 +220,23 @@ namespace Calendar {
             buttonLogin.Name = "LoginButton";
         }
 
-        private void SetLabelsTransparency() {
+        private void SetLabelsTransparency()
+        {
             // Makes the BG of all labels transparent
 
-            for (int i = 0; i < MyLabels.Count; i++) {
+            for (int i = 0; i < MyLabels.Count; i++)
+            {
                 MyLabels[i].BackColor = System.Drawing.Color.Transparent;
             }
         }
 
-        public List<Control> getControls() {
+        public List<Control> getControls()
+        {
             // Returns a collection of all controls to be added to the Form Controls collection
 
             List<Control> controls = new List<Control>();
 
-            controls.AddRange(MyLabels);           
+            controls.AddRange(MyLabels);
             controls.AddRange(MyTextBoxes);
             controls.AddRange(MyButtons);
 

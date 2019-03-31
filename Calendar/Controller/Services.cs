@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using Newtonsoft.Json;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -12,17 +9,6 @@ using System.Windows.Forms;
 namespace Calendar.Controller {
     public static class Services {
         private static string initialURL = "http://api.openweathermap.org/data/2.5/weather?q=city&appid=3d5632822352c9cd93370a8212356d3f";
-
-        public static string GetConnectionString(string file) {
-            // Returns the DB connection string stored in the Connecton.json file
-            Connection con; 
-            using (StreamReader r = new StreamReader(file)) {
-                string json = r.ReadToEnd();
-                con = JsonConvert.DeserializeObject<Connection>(json);
-            }
-
-            return con.ConnectionString;
-        }
 
         public static string GenerateGreeting() {
             // Generates a greeting message based on the time of day

@@ -232,3 +232,7 @@ C:\School\ToDoList\Calendar\bin\Debug\Newtonsoft.Json.pdb
 C:\School\ToDoList\Calendar\bin\Debug\Newtonsoft.Json.xml
 C:\School\ToDoList\Calendar\obj\Debug\Calendar.exe.config
 C:\School\ToDoList\Calendar\obj\Debug\Calendar.csproj.CopyComplete
+C:\School\ToDoList\Calendar\bin\Debug\EntityFramework.dll
+C:\School\ToDoList\Calendar\bin\Debug\EntityFramework.SqlServer.dll
+C:\School\ToDoList\Calendar\bin\Debug\EntityFramework.xml
+C:\School\ToDoList\Calendar\bin\Debug\EntityFramework.SqlServer.xml

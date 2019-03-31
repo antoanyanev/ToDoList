@@ -1,10 +1,7 @@
-﻿using Calendar.Controller;
+﻿using Calendar.Models;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calendar.Views
@@ -13,7 +10,6 @@ namespace Calendar.Views
     {
         private Login login;
         private ToDo toDo;
-        private SqlConnection dbCon;
         private Form1 form;
         private Control loginButton;
         private List<Control> controls;
@@ -25,7 +21,6 @@ namespace Calendar.Views
             login = new Login();
             toDo = new ToDo(form);
             controls = new List<Control>();
-            dbCon = new SqlConnection(Services.GetConnectionString("Connection.json"));
 
             AddControlsToForm();
             CheckLogin();
@@ -43,37 +38,30 @@ namespace Calendar.Views
 
         private void CheckLogin()
         {
-            dbCon.Open();
-            string result = "";
-            using (dbCon)
+            var context = new DataEntities();
+
+            if (!context.Users.Any())
             {
-                SqlCommand command = new SqlCommand("SELECT * FROM USERS");
-                command.Connection = dbCon;
-                try
-                {
-                    result = command.ExecuteScalar().ToString();
-                }
-                catch
-                {
-                    login.ShowContent();
-                    toDo.HideContent();
-
-                    return;
-                }
+                login.ShowContent();
+                toDo.HideContent();
             }
-
-            login.HideContent();
-            toDo.ShowContent();
+            else
+            {
+                login.HideContent();
+                toDo.ShowContent();
+            }
         }
 
         public void LoginButtonClicked(object sender, EventArgs e)
         {
             // Event handler bound to the login button
 
-            login.CreateUser();
-            login.HideContent();
-            toDo.ShowContent();
-            toDo.UpdateInfo();
+            if (login.CreateUser())
+            {
+                login.HideContent();
+                toDo.ShowContent();
+                toDo.UpdateInfo();
+            }
         }
     }
 }
