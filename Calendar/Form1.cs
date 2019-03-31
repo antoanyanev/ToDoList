@@ -9,28 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Calendar.Views;
 
 namespace Calendar {
     public partial class Form1 : Form {
-        Login login;
-        ToDo toDo;
+        private Display display;
 
         public Form1() {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.AutoScroll = true;
-            login = new Login();
-            toDo = new ToDo(this);
-            toDo.HideContent();
+            display = new Display(this);
+
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            List<Control> controls = login.getControls(toDo);
-            controls.AddRange(toDo.getControls());
-            Controls.AddRange(controls.ToArray());
+        }
 
-            login.HideContent();
-            toDo.ShowContent();
+        public void AddControls(List<Control> controls)
+        {
+            Controls.AddRange(controls.ToArray());
         }
     }
 }

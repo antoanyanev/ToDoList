@@ -19,8 +19,6 @@ using Calendar.Forms;
 
 namespace Calendar {
     public class Login : Page {
-        ToDo toDo; // Creates a ToDo instanse to acces the Hide and Show methods
-
         private const int sizeX = 60; // Defines the X size of the controls
         private const int sizeY = 20; // Defines the Y size of the controls
         private const int firstLabelX = 80; // Defines the starting X point of the labels
@@ -62,7 +60,7 @@ namespace Calendar {
         }
 
         public void CreateUser() {
-            // Opens a connection to the DB and after validations adds the user to the users Table
+            // Opens a connection to the DB and after validations adds the user to the Users Table
 
             SqlConnection dbCon = new SqlConnection(connectionString);
             dbCon.Open();
@@ -76,10 +74,7 @@ namespace Calendar {
 
                     SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
                     command.ExecuteScalar();
-
-                    HideContent();
-                    toDo.ShowContent();
-                }
+                }               
             }
 
             dbCon.Close();
@@ -142,7 +137,6 @@ namespace Calendar {
             // Button //
 
             buttonLogin = new Button();
-            buttonLogin.Click += Clicked;
         }
 
         private void IntitializeArrays() {
@@ -212,10 +206,8 @@ namespace Calendar {
             }
         }
 
-        public List<Control> getControls(ToDo todo) {
+        public List<Control> getControls() {
             // Returns a collection of all controls to be added to the Form Controls collection
-
-            this.toDo = todo;
 
             List<Control> controls = new List<Control>();
 
@@ -224,13 +216,6 @@ namespace Calendar {
             controls.AddRange(MyButtons);
 
             return controls;
-        }
-
-        public void Clicked(object sender, EventArgs e) {
-            // Event handler bound to the login button
-
-            CreateUser();
-            toDo.UpdateInfo();
         }
     }
 }

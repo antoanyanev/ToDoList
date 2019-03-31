@@ -22,8 +22,8 @@ using Calendar.Forms;
 namespace Calendar {
     public class ToDo : Page {
         private Form1 form; // Form1 object to access the 
-        private const int labelStartx = 20; // Global constant for the beginning X point of the tasks labels
-        private const int labelStartY = 90; // Global constant for the beginning Y point of the tasks labels
+        private int labelStartX = 20; // Global constant for the beginning X point of the tasks labels
+        private int labelStartY = 90; // Global constant for the beginning Y point of the tasks labels
 
         // Buttons //
 
@@ -50,7 +50,7 @@ namespace Calendar {
             SetControlsPosition(52, 70); // Place them on the screen
 
             FetchTasks(); // Retrieve all tasks from DB
-            GenerateLabelsAndButtons(labelStartx, labelStartY); // Generate the necessary labels;
+            GenerateLabelsAndButtons(); // Generate the necessary labels;
             HideContent(); // Hide all controls until needed
             UpdateInfo(); // Update the top page label
             RepeatUpdate();
@@ -84,7 +84,7 @@ namespace Calendar {
                     surname = reader.GetString(2);
                     city = reader.GetString(5).ToLower();
                 }
-                catch (Exception e) {
+                catch  {
                     name = "";
                     surname = "";
                     city = "sofia";  // default city value
@@ -149,7 +149,7 @@ namespace Calendar {
             }
 
             foreach (Button button in MyDelete) {
-                button.Hide();
+                button.Show();
             }
         }
 
@@ -178,7 +178,7 @@ namespace Calendar {
             // Update the local collection of tasks and display them again
 
             FetchTasks();
-            GenerateLabelsAndButtons(labelStartx, labelStartY);
+            GenerateLabelsAndButtons();
         }
 
         public void FetchTasks() {
@@ -255,14 +255,14 @@ namespace Calendar {
 
             UpdateLabelsAndButtons();
             FetchTasks();
-            GenerateLabelsAndButtons(labelStartx, labelStartY);
+            GenerateLabelsAndButtons();
 
             // Close DB connection
 
             dbCon.Close();
         }
 
-        public void GenerateLabelsAndButtons(int labelX, int labelY) {
+        public void GenerateLabelsAndButtons() {
             // Generates label objects based on the values returned from the Fetchtasks() values stored in labelNames
             // labelX -> Defines the starting point of the labels on the X axis
             // labelY -> Defines the starting point of the labels on the Y axis
@@ -271,7 +271,7 @@ namespace Calendar {
                 Label label = new Label();
                 label.Text = text;
                 label.Size = new Size(60, 20);
-                label.Location = new Point(labelX, labelY);
+                label.Location = new Point(labelStartX, labelStartY);
                 label.BackColor = System.Drawing.Color.Transparent;
                 label.AutoSize = true;
                 label.Font = new Font("Segoe UI", 20);
@@ -280,23 +280,23 @@ namespace Calendar {
 
                 Button delete = new Button();
                 delete.Size = new Size(32, 32);
-                delete.Location = new Point(labelX + 260, labelY + 5);
+                delete.Location = new Point(labelStartX + 260, labelStartY + 5);
                 delete.Name = text;
                 delete.Image = Image.FromFile("trash.png");
                 delete.Click += DeleteClicked;
 
-                labelY += 50;
+                labelStartY += 50;
 
                 // Add the generated item to the actual label collection
 
                 MyLabels.Add(label);
                 MyDelete.Add(delete);
 
-                if (!form.Controls.Contains(label)) {
-                    form.Controls.Add(label);
-                    form.Controls.Add(delete);
-                }
+                form.Controls.Add(label);
+                form.Controls.Add(delete);
             }
+
+            labelStartY = 90;
         }
 
         public void UpdateLabelsAndButtons() {

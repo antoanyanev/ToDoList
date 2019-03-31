@@ -80,7 +80,7 @@ namespace Calendar.Controller {
                     }
                 }
             }
-            catch (Exception e) {
+            catch {
                 temp = 0;
             }
 
