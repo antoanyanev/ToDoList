@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Calendar {
-    class Connection {
+    public class Connection {
         private string connectionString;
 
         public string ConnectionString {

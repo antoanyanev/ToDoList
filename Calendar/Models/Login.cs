@@ -14,9 +14,11 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Drawing;
+using Calendar.Controller;
+using Calendar.Forms;
 
 namespace Calendar {
-    public class Login {
+    public class Login : Page {
         ToDo toDo; // Creates a ToDo instanse to acces the Hide and Show methods
 
         private const int sizeX = 60; // Defines the X size of the controls
@@ -47,23 +49,8 @@ namespace Calendar {
 
         private Button buttonLogin;
 
-        // All Coontrols Collections //
-
-        List<TextBox> MyTextBoxes;
-        List<Label> MyLabels;
-        List<Button> MyButtons;
-
-        private Connection con; // Connection type object used for parsing
-        private string connectionString; // Actual DB connection string
-
-        public Login() {
+        public Login() : base() {
             // Initialize all global variables //
-
-            connectionString = GetConnectionString("Connection.json");
-
-            this.MyTextBoxes = new List<TextBox>();
-            this.MyLabels = new List<Label>();
-            this.MyButtons = new List<Button>();
 
             GenerateControls(); // Initialize all controls
             SetControlsText(); // Set the text to the controls
@@ -82,9 +69,9 @@ namespace Calendar {
 
             using (dbCon) {
                 List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).ToList());
-                string date = ReformatDate(info[2]);
+                string date = Services.ReformatDate(info[2]);
 
-                if (CheckNull(info) && CheckDate(date)) {
+                if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels)) {
                     string values = $"VALUES ('{info[0]}', '{info[1]}', '{date}', '{info[3]}', '{info[4]}')";
 
                     SqlCommand command = new SqlCommand("INSERT INTO USERS (Name, Surname, Birthdate, Gender, City)" + values, dbCon);
@@ -223,55 +210,6 @@ namespace Calendar {
             for (int i = 0; i < MyLabels.Count; i++) {
                 MyLabels[i].BackColor = System.Drawing.Color.Transparent;
             }
-        }
-
-        private bool CheckNull(List<string> input) {
-            // Checks if any fields are left empty
-
-            bool ok = true;
-
-            foreach (string str in input) {
-                if (str == String.Empty) {
-                    ok = false;
-                    MyLabels.Where(x => x.Name == "labelError").First().Text = "No empty fields!";
-                    break;
-                }
-            }
-
-            return ok;
-        }
-
-        private bool CheckDate(string input) {
-            // Checks if the birthdate is in the correct format
-
-            bool ok = true;
-            Regex rx = new Regex(@"([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))"); 
-
-            MatchCollection matches = rx.Matches(input);
-
-            if (matches.Count != 1) {
-                MyLabels.Where(x => x.Name == "labelError").First().Text = "Invalid Date!";
-                ok = false;
-            }
-
-            return ok;
-        }
-
-        public string GetConnectionString(string file) {
-            // Retrieves the DB connection string from the Connection.json file
-
-            using (StreamReader r = new StreamReader(file)) {
-                string json = r.ReadToEnd();
-                con = JsonConvert.DeserializeObject<Connection>(json);
-            }
-
-            return con.ConnectionString;
-        }
-
-        public string ReformatDate(string input) {
-            // Reformats the default DateTime format from yyyy-mm-dd to dd/mm/yyyy
-
-            return String.Join("-", input.Split('/').Reverse().ToArray());
         }
 
         public List<Control> getControls(ToDo todo) {

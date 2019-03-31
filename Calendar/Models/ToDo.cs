@@ -16,24 +16,14 @@ using System.Collections.Generic;
 using System;
 using System.Net;
 using System.Threading;
+using Calendar.Controller;
+using Calendar.Forms;
 
 namespace Calendar {
-    public class ToDo {
+    public class ToDo : Page {
         private Form1 form; // Form1 object to access the 
         private const int labelStartx = 20; // Global constant for the beginning X point of the tasks labels
         private const int labelStartY = 90; // Global constant for the beginning Y point of the tasks labels
-        private string url1 = "http://api.openweathermap.org/data/2.5/weather?q="; // First part of the Weather API URL
-        private string url2 = "&appid=3d5632822352c9cd93370a8212356d3f"; // Second part of the Weather API URL, split to add city parameter
-
-        private SqlConnection dbCon; // DB connection variable
-        private Connection con; // DB connection type to get the DB connection string
-        private string connectionString; // DB connection string after parsing
-
-        private List<Button> MyButtons; // Collection of all buttons
-        private List<TextBox> MyTextBoxes; // Collection of all text boxes
-        private List<Label> MyLabels; // Collection of all labels
-        private List<Button> MyDelete;
-        private List<string> labelNames; // Auxiliary collection to store info from DB
 
         // Buttons //
 
@@ -48,18 +38,10 @@ namespace Calendar {
 
         private Label labelInfo;
 
-        public ToDo(Form1 form) {
+        public ToDo(Form1 form) : base() {
             // Intialize global variables
 
             this.form = form;
-
-            MyButtons = new List<Button>();
-            MyTextBoxes = new List<TextBox>();
-            MyLabels = new List<Label>();
-            labelNames = new List<string>();
-            MyDelete = new List<Button>();
-
-            connectionString = GetConnectionString("Connection.json");
 
             GenerateControls(); // Create all controls
             IntitializeArrays(); // Put them into their corresponding collection
@@ -114,12 +96,12 @@ namespace Calendar {
             dbCon.Close();
 
             // Put toghether separate parts of the message
-            sb.Append(GenerateGreeting());
+            sb.Append(Services.GenerateGreeting());
             sb.Append(name + " ");
             sb.Append(surname + " ");
-            sb.Append(GetTime() + new string(' ', 20));
+            sb.Append(Services.GetTime() + new string(' ', 20));
             sb.Append(city + " ");
-            sb.Append(GetWeather(city) + "°C");
+            sb.Append(Services.GetWeather(city) + "°C");
 
             // Update the message
 
@@ -133,6 +115,7 @@ namespace Calendar {
             foreach (Label label in MyLabels) {
                 label.Hide();
             }
+
             labelInfo.Hide();
 
             foreach (TextBox box in MyTextBoxes) {
@@ -140,6 +123,10 @@ namespace Calendar {
             }
 
             foreach (Button button in MyButtons) {
+                button.Hide();
+            }
+
+            foreach (Button button in MyDelete) {
                 button.Hide();
             }
         }
@@ -159,6 +146,10 @@ namespace Calendar {
 
             foreach (Label label in MyLabels) {
                 label.Show();
+            }
+
+            foreach (Button button in MyDelete) {
+                button.Hide();
             }
         }
 
@@ -188,7 +179,6 @@ namespace Calendar {
 
             FetchTasks();
             GenerateLabelsAndButtons(labelStartx, labelStartY);
-
         }
 
         public void FetchTasks() {
@@ -209,6 +199,65 @@ namespace Calendar {
                     }
                 }
             }
+
+            dbCon.Close();
+        }
+
+        private void DeleteAllTasks() {
+            // Deletes all available tasks
+            // Opens a warning message box
+
+            // setup parameters for message box
+
+            string message = "Are you sure?";
+            string caption = "Delete all?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            // Open message box with the parameters 
+
+            result = MessageBox.Show(message, caption, buttons);
+
+            // Only execute deletion if yes has been selected
+
+            if (result == DialogResult.Yes) {
+                dbCon = new SqlConnection(connectionString);
+                dbCon.Open();
+
+                using (dbCon) {
+                    SqlCommand command = new SqlCommand("DELETE FROM TASKS");
+                    command.Connection = dbCon;
+
+                    command.ExecuteScalar();
+                }
+
+                UpdateLabelsAndButtons();
+
+                dbCon.Close();
+            }
+        }
+
+        private void DeleteTask(string content) {
+            // Deletes a task from the DB based on it's content
+
+            // Open a DB connection
+            dbCon = new SqlConnection(connectionString);
+            dbCon.Open();
+
+            using (dbCon) {
+                SqlCommand command = new SqlCommand($"DELETE FROM TASKS WHERE CONTENT='{content}'");
+                command.Connection = dbCon;
+
+                command.ExecuteNonQuery();
+            }
+
+            // Refresh Tasks
+
+            UpdateLabelsAndButtons();
+            FetchTasks();
+            GenerateLabelsAndButtons(labelStartx, labelStartY);
+
+            // Close DB connection
 
             dbCon.Close();
         }
@@ -337,65 +386,6 @@ namespace Calendar {
             labelInfo.Location = new Point(20, 20);
         }
 
-        private void DeleteAllTasks() {
-            // Deletes all available tasks
-            // Opens a warning message box
-
-            // setup parameters for message box
-
-            string message = "Are you sure?";
-            string caption = "Delete all?";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
-            // Open message box with the parameters 
-
-            result = MessageBox.Show(message, caption, buttons);
-
-            // Only execute deletion if yes has been selected
-
-            if (result == DialogResult.Yes) {
-                dbCon = new SqlConnection(connectionString);
-                dbCon.Open();
-
-                using (dbCon) {
-                    SqlCommand command = new SqlCommand("DELETE FROM TASKS");
-                    command.Connection = dbCon;
-
-                    command.ExecuteScalar();
-                }
-
-                UpdateLabelsAndButtons();
-
-                dbCon.Close();
-            }
-        }
-
-        private void DeleteTask(string content) {
-            // Deletes a task from the DB based on it's content
-
-            // Open a DB connection
-            dbCon = new SqlConnection(connectionString);
-            dbCon.Open();
-
-            using (dbCon) {
-                SqlCommand command = new SqlCommand($"DELETE FROM TASKS WHERE CONTENT='{content}'");
-                command.Connection = dbCon;
-
-                command.ExecuteNonQuery();
-            }
-
-            // Refresh Tasks
-
-            UpdateLabelsAndButtons();
-            FetchTasks();
-            GenerateLabelsAndButtons(labelStartx, labelStartY);
-
-            // Close DB connection
-
-            dbCon.Close();
-        }
-
         private void RepeatUpdate() {
             // Opens a second thread to update the clock and weather
 
@@ -428,67 +418,6 @@ namespace Calendar {
             }
         }
 
-        private int GetWeather(string city) {
-            // Gets the weather based on the city parameter
-            // Executes a HTTP GEt request to an API (www.openweathermap.org)
-            // returns the temperature value as an integer
-
-            // Add the city parameter to the request URL
-
-            int temp;
-            string url = url1 + city + url2;
-
-            // Initialize the request with the URL
-
-            var webRequest = WebRequest.Create(url) as HttpWebRequest;
-            webRequest.ContentType = "application/json";
-            webRequest.UserAgent = "Nothing";
-
-            // Check if the request wit hthe city is valid
-            // Otherwise, use the default value of 0
-
-            try {
-                using (var s = webRequest.GetResponse().GetResponseStream()) {
-                    using (var sr = new StreamReader(s)) {
-                        string result = sr.ReadToEnd();
-                        int index = result.IndexOf("temp");
-                        temp = int.Parse(result.Substring(index + 6, 3));
-                        temp -= 273; // kelvin to degrees centigrade conversion
-                    }
-                }
-            }
-            catch (Exception e) {
-                temp = 0;
-            }
-
-            return temp;
-        }
-
-        private string GetTime() {
-            // Returns the time now {HH:mm}
-
-            return DateTime.Now.ToString("HH:mm");
-        }
-
-        private string GenerateGreeting() {
-            // Generates a greeting message based on the time of day
-
-            int hour = int.Parse(GetTime().Split(':')[0]);
-            string message = "";
-
-            if (hour >= 0 && hour <= 12) {
-                message = "Good morning, ";
-            }
-            else if (hour > 12 && hour <= 19) {
-                message = "Helo, ";
-            }
-            else if (hour > 19 && hour < 24) {
-                message = "Good evening, ";
-            }
-
-            return message;
-        }
-
         public List<Control> getControls() {
             // Returns a list of all controls
             // The return values is passed to the Form Controls array
@@ -500,18 +429,7 @@ namespace Calendar {
             controls.AddRange(MyButtons);
 
             return controls;
-        }
-
-        public string GetConnectionString(string file) {
-            // Returns the DB connection string stored in the Connecton.json file
-
-            using (StreamReader r = new StreamReader(file)) {
-                string json = r.ReadToEnd();
-                con = JsonConvert.DeserializeObject<Connection>(json);
-            }
-
-            return con.ConnectionString;
-        }     
+        }   
 
         public void AddClicked(object sender, EventArgs e) {
             // Event handler bound to the Add button
