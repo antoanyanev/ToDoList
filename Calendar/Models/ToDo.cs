@@ -2,8 +2,6 @@
     This is the second and main page of the app
     Use it to store, add and delete your taks
     The top label contains a greeting message and basic weather info
-
-    Written by Antoan Yanev & Vladislav Milenkov
 */
 
 using System.Text;
@@ -14,12 +12,10 @@ using System;
 using System.Threading;
 using Calendar.Controller;
 using Calendar.Forms;
-using Calendar.Models;
-using System.Linq;
 
 namespace Calendar {
     public class ToDo : Page {
-        private Form1 form; // Form1 object to access the 
+        private Form1 form; // Form1 object to access the form
         private int labelStartX = 20; // Global constant for the beginning X point of the tasks labels
         private int labelStartY = 90; // Global constant for the beginning Y point of the tasks labels
 
@@ -37,7 +33,7 @@ namespace Calendar {
         private Label labelInfo;
 
         public ToDo(Form1 form) : base() {
-            // Intialize global variables
+            // Intialize global variables //
 
             this.form = form;
 
@@ -51,7 +47,7 @@ namespace Calendar {
             GenerateLabelsAndButtons(); // Generate the necessary labels;
             HideContent(); // Hide all controls until needed
             UpdateInfo(); // Update the top page label
-            RepeatUpdate();
+            RepeatUpdate(); // Updates the clock and weather every minute 
         }
 
         public void UpdateInfo() {
@@ -60,8 +56,7 @@ namespace Calendar {
             // Make sure there's a valid login in the Users table
             // Otherwise, use the default values
 
-            var context = new DataEntities();
-            var user = context.Users.FirstOrDefault<User>();
+            var user = Services.GetUser();
 
             StringBuilder sb = new StringBuilder();
             string name ;
@@ -79,10 +74,10 @@ namespace Calendar {
                 name = "";
                 surname = "";
                 city = "sofia";
-            }
-            
+            }          
 
             // Put toghether separate parts of the message
+
             sb.Append(Services.GenerateGreeting());
             sb.Append(name + " ");
             sb.Append(surname + " ");
@@ -97,7 +92,6 @@ namespace Calendar {
 
         public void HideContent() {
             // Iterates through all available controls and Hides them
-            // Used when switching pages
 
             foreach (Label label in MyLabels) {
                 label.Hide();
@@ -120,7 +114,6 @@ namespace Calendar {
 
         public void ShowContent() {
             // Iterates through all available controls and displays them
-            // Used when switcing pages
 
             foreach (TextBox box in MyTextBoxes) {
                 box.Show();
@@ -143,17 +136,8 @@ namespace Calendar {
         public void AddTask(string content) {
             // Adds a new task to the dashboard
 
-            var context = new DataEntities1();
-            
-            if (content != String.Empty) {
+            Services.AddTask(content);
 
-                var task = new Task() {
-                    Content = content
-                };
-
-                context.Tasks.Add(task);
-                context.SaveChanges();
-            }
             // Update the local collection of tasks and display them again
 
             FetchTasks();
@@ -162,9 +146,7 @@ namespace Calendar {
 
         public void FetchTasks() {
             // Retrieves all tasks from the DB table
-
-            var context = new DataEntities1();
-            var tasks = context.Tasks.ToList();
+            var tasks = Services.GetAllTasks();
 
             for (int i = 0; i < tasks.Count; i++)
             {
@@ -177,7 +159,7 @@ namespace Calendar {
             // Deletes all available tasks
             // Opens a warning message box
 
-            // setup parameters for message box
+            // Setup parameters for message box
 
             string message = "Are you sure?";
             string caption = "Delete all?";
@@ -191,10 +173,8 @@ namespace Calendar {
             // Only execute deletion if yes has been selected
 
             if (result == DialogResult.Yes) {
-                var context = new DataEntities1();
 
-                context.Tasks.RemoveRange(context.Tasks);
-                context.SaveChanges();
+                Services.DeleteAllTasks();
 
                 UpdateLabelsAndButtons();
             }
@@ -203,9 +183,7 @@ namespace Calendar {
         private void DeleteTask(string content) {
             // Deletes a task from the DB based on it's content
 
-            var context = new DataEntities1();
-            context.Tasks.Remove(context.Tasks.Single(t => t.Content == content));
-            context.SaveChanges();
+            Services.DeleteTask(content);
             
             // Refresh Tasks
 
@@ -317,7 +295,7 @@ namespace Calendar {
             buttonDeleteAll.Text = "Delete all";
             buttonDeleteAll.Name = "DeleteAllButton";
 
-            // text Box //
+            // Text Box //
 
             textBoxInput.Name = "InputTextBox";
         }
@@ -394,6 +372,7 @@ namespace Calendar {
 
         public void DeleteAllClicked(object sender, EventArgs e) {
             // Event handler bound to the DeleteAll button
+
             DeleteAllTasks();
         }
 

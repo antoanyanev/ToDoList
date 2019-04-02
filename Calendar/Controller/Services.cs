@@ -1,14 +1,20 @@
-﻿using System;
+﻿/*
+    This is the Services controller class.
+    Use it to retrieve DB and API data.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Calendar.Models;
 
 namespace Calendar.Controller {
     public static class Services {
-        private static string initialURL = "http://api.openweathermap.org/data/2.5/weather?q=city&appid=3d5632822352c9cd93370a8212356d3f";
+        private static string initialURL = "http://api.openweathermap.org/data/2.5/weather?q=city&appid=3d5632822352c9cd93370a8212356d3f"; // API request url
 
         public static string GenerateGreeting() {
             // Generates a greeting message based on the time of day
@@ -109,6 +115,96 @@ namespace Calendar.Controller {
             }
 
             return ok;
+        }
+
+        public static bool CheckLogin()
+        {
+            // Checks if there is a registered user
+
+            var context = new DataEntities();
+
+            if (!context.Users.Any())
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static void CreateUser(List<string> info)
+        {
+            // Adds a user registration
+
+            var context = new DataEntities();
+            var user = new User()
+            {
+                Name = info[0],
+                Surname = info[1],
+                Birthdate = Services.ReformatDate(info[2]),
+                Gender = info[3],
+                City = info[4]
+            };
+
+            context.Users.Add(user);
+            context.SaveChanges();
+        }
+
+        public static User GetUser()
+        {
+            // Gets the user's info
+
+            var context = new DataEntities();
+
+            return context.Users.FirstOrDefault<User>();
+        }
+
+        public static void AddTask(string content)
+        {
+            // Adds a task to the Task table
+
+            var context = new DataEntities1();
+
+            if (content != String.Empty)
+            {
+
+                var task = new Task()
+                {
+                    Content = content
+                };
+
+                context.Tasks.Add(task);
+                context.SaveChanges();
+            }
+        }
+
+        public static List<Task> GetAllTasks()
+        {
+            // Returns a list of all tasks
+
+            var context = new DataEntities1();
+
+            return context.Tasks.ToList();
+        }
+
+        public static void DeleteAllTasks()
+        {
+            // Deletes all the tasks from the database
+
+            var context = new DataEntities1();
+
+            context.Tasks.RemoveRange(context.Tasks);
+            context.SaveChanges();
+        }
+
+        public static void DeleteTask(string content)
+        {
+            // Deletes a task from the database
+
+            var context = new DataEntities1();
+            context.Tasks.Remove(context.Tasks.Single(t => t.Content == content));
+            context.SaveChanges();
         }
     }
 }

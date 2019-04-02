@@ -1,8 +1,6 @@
 ﻿/*
     This is the first app page
     Use it to create your user and then login
-
-    Written by Antoan Yanev & Vladislav Milenkov
 */
 
 using System.Collections.Generic;
@@ -11,7 +9,6 @@ using System.Windows.Forms;
 using System.Drawing;
 using Calendar.Controller;
 using Calendar.Forms;
-using Calendar.Models;
 
 namespace Calendar
 {
@@ -47,15 +44,12 @@ namespace Calendar
 
         public Login() : base()
         {
-            // Initialize all global variables //
-
             GenerateControls(); // Initialize all controls
             SetControlsText(); // Set the text to the controls
             IntitializeArrays(); // Add the controls to their corresponging collection
             SetControlsPosition(firstLabelX, firstLabelAndBoxY, firstTextBoxX, firstLabelAndBoxY); // Place them on the screen
             SetControlsSize(sizeX, sizeY); // Give them a size
             SetLabelsTransparency(); // Make the Labels' BG colour tranapsrent
-            ShowContent(); // make all controls visible
         }
 
         public bool CreateUser()
@@ -66,22 +60,11 @@ namespace Calendar
             string date = Services.ReformatDate(info[2]);
 
             if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels))
-            {           
-                var context = new DataEntities();
-                var user = new User()
-                {
-                    Name = info[0],
-                    Surname = info[1],
-                    Birthdate = date,
-                    Gender = info[3],
-                    City = info[4]
-                };
-                
-                context.Users.Add(user);
-                context.SaveChanges();
-
+            {
+                Services.CreateUser(info);
                 return true;
             }
+
             return false;
         }
 
@@ -107,7 +90,7 @@ namespace Calendar
 
         public void ShowContent()
         {
-            // Iterates over all controls and displayes them
+            // Iterates over all controls and displays them
 
             foreach (TextBox box in MyTextBoxes)
             {
@@ -180,10 +163,10 @@ namespace Calendar
                 boxStartY += 30;
             }
 
-            MyLabels[5].Location = new Point(250, 220);  // format
-            MyLabels[6].Location = new Point(190, 345);  // error
+            MyLabels[5].Location = new Point(250, 220);  // format label
+            MyLabels[6].Location = new Point(190, 345);  // error label
 
-            MyButtons[0].Location = new Point(130, 340);
+            MyButtons[0].Location = new Point(130, 340); // login button
         }
 
         private void SetControlsSize(int x, int y)
