@@ -43,11 +43,14 @@ namespace Calendar {
             SetControlsText(); // Add text if needed
             SetControlsPosition(52, 70); // Place them on the screen
 
+            Console.WriteLine(MyTextBoxes[0].Size);
+
             FetchTasks(); // Retrieve all tasks from DB
             GenerateLabelsAndButtons(); // Generate the necessary labels;
             HideContent(); // Hide all controls until needed
             UpdateInfo(); // Update the top page label
             RepeatUpdate(); // Updates the clock and weather every minute 
+
         }
 
         public void UpdateInfo() {
@@ -78,7 +81,7 @@ namespace Calendar {
 
             // Put toghether separate parts of the message
 
-            sb.Append(Services.GenerateGreeting());
+            sb.Append(Services.GenerateGreeting(Services.GetTime()));
             sb.Append(name + " ");
             sb.Append(surname + " ");
             sb.Append(Services.GetTime() + new string(' ', 20));
@@ -273,7 +276,7 @@ namespace Calendar {
             // Text Boxes //
 
             foreach (var textBox in MyTextBoxes) {
-                textBox.Size = new Size(285, 60);
+                textBox.Size = new Size(285, 20);
             }
 
             // Buttons //
@@ -358,7 +361,7 @@ namespace Calendar {
             controls.Add(labelInfo);
             controls.AddRange(MyTextBoxes);
             controls.AddRange(MyButtons);
-
+ 
             return controls;
         }   
 

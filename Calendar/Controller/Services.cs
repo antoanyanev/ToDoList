@@ -16,9 +16,8 @@ namespace Calendar.Controller {
     public static class Services {
         private static string initialURL = "http://api.openweathermap.org/data/2.5/weather?q=city&appid=3d5632822352c9cd93370a8212356d3f"; // API request url
 
-        public static string GenerateGreeting() {
+        public static string GenerateGreeting(string time) {
             // Generates a greeting message based on the time of day
-            string time = GetTime();
 
             int hour = int.Parse(time.Split(':')[0]);
             string message = "";
@@ -80,7 +79,7 @@ namespace Calendar.Controller {
         }
 
         public static string ReformatDate(string input) {
-            // Reformats the default DateTime format from yyyy-mm-dd to dd/mm/yyyy
+            // Reformats the default DateTime format to yyyy-mm-dd from dd/mm/yyyy
 
             return String.Join("-", input.Split('/').Reverse().ToArray());
         }

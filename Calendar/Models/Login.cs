@@ -209,7 +209,7 @@ namespace Calendar
 
             for (int i = 0; i < MyLabels.Count; i++)
             {
-                MyLabels[i].BackColor = System.Drawing.Color.Transparent;
+                MyLabels[i].BackColor = Color.Transparent;
             }
         }
 

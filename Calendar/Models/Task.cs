@@ -15,6 +15,6 @@ namespace Calendar.Models
     public partial class Task
     {
         public int id { get; set; }
-        public string Content { get; set; }
+        public string Content { get; set; } 
     }
 }
