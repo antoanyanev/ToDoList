@@ -239,3 +239,10 @@ C:\School\ToDoList\Calendar\bin\Debug\EntityFramework.SqlServer.xml
 C:\School\ToDoList\Calendar\bin\Debug\nunit.framework.dll
 C:\School\ToDoList\Calendar\bin\Debug\nunit.framework.pdb
 C:\School\ToDoList\Calendar\bin\Debug\nunit.framework.xml
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\EntityFramework.dll
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\nunit.framework.dll
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\EntityFramework.xml
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\nunit.framework.pdb
+C:\Users\Toni\Desktop\New folder\Calendar\bin\Debug\nunit.framework.xml

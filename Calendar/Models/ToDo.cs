@@ -1,10 +1,4 @@
-﻿/*
-    This is the second and main page of the app
-    Use it to store, add and delete your taks
-    The top label contains a greeting message and basic weather info
-*/
-
-using System.Text;
+﻿using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -13,71 +7,89 @@ using System.Threading;
 using Calendar.Controller;
 using Calendar.Forms;
 
-namespace Calendar {
+namespace Calendar {   
+    /// <summary>
+    /// This is the second and main page of the app
+    /// Use it to store, add and delete your taks
+    /// The top label contains a greeting message and basic weather info
+    /// </summary>
     public class ToDo : Page {
-        private Form1 form; // Form1 object to access the form
-        private int labelStartX = 20; // Global constant for the beginning X point of the tasks labels
-        private int labelStartY = 90; // Global constant for the beginning Y point of the tasks labels
+        #region Variables
 
-        // Buttons //
+        /// <summary>
+        /// Form1 object to access the form
+        /// </summary>
+        private Form1 form;
+        /// <summary>
+        /// Global constant for the beginning X point of the tasks labels
+        /// </summary>
+        private int labelStartX = 20;
+        /// <summary>
+        /// Global constant for the beginning Y point of the tasks labels
+        /// </summary>
+        private int labelStartY = 90;
 
+        /// <summary>
+        /// AddButton object
+        /// </summary>
         private Button buttonAdd;
+        /// <summary>
+        /// DeleteAllButton object
+        /// </summary>
         private Button buttonDeleteAll;
 
-        // TextBoxes //
-
+        /// <summary>
+        /// InputBox object
+        /// </summary>
         private TextBox textBoxInput;
 
-        // Labels //
-
+        /// <summary>
+        /// InfoLabel object
+        /// </summary>
         private Label labelInfo;
 
+        #endregion
+        #region Methods
+        /// <summary>
+        /// Constructor method
+        /// </summary>
+        /// <param name="form">Form1 object</param>
         public ToDo(Form1 form) : base() {
-            // Intialize global variables //
-
             this.form = form;
-
             GenerateControls(); // Create all controls
             IntitializeArrays(); // Put them into their corresponding collection
             SetControlsSize(); // Set their size
             SetControlsText(); // Add text if needed
             SetControlsPosition(52, 70); // Place them on the screen
-
-            Console.WriteLine(MyTextBoxes[0].Size);
-
             FetchTasks(); // Retrieve all tasks from DB
-            GenerateLabelsAndButtons(); // Generate the necessary labels;
+            GenerateLabelsAndButtons(); // Generate the necessary labels
             HideContent(); // Hide all controls until needed
             UpdateInfo(); // Update the top page label
             RepeatUpdate(); // Updates the clock and weather every minute 
-
         }
 
+        /// <summary>
+        /// Generates the message for the info label (top page label)
+        /// </summary>
         public void UpdateInfo() {
-            // Generates the message for the info label (top page label)
-
             // Make sure there's a valid login in the Users table
             // Otherwise, use the default values
 
             var user = Services.GetUser();
-
             StringBuilder sb = new StringBuilder();
-            string name ;
+            string name;
             string surname;
             string city;
 
-            try
-            {
+            try {
                 name = user.Name;
                 surname = user.Surname;
                 city = user.City;
-            }
-            catch
-            {
+            } catch {
                 name = "";
                 surname = "";
                 city = "sofia";
-            }          
+            }
 
             // Put toghether separate parts of the message
 
@@ -93,9 +105,10 @@ namespace Calendar {
             labelInfo.Text = sb.ToString();
         }
 
+        /// <summary>
+        /// Iterates through all available controls and Hides them
+        /// </summary>
         public void HideContent() {
-            // Iterates through all available controls and Hides them
-
             foreach (Label label in MyLabels) {
                 label.Hide();
             }
@@ -115,9 +128,10 @@ namespace Calendar {
             }
         }
 
+        /// <summary>
+        /// Iterates through all available controls and displays them
+        /// </summary>
         public void ShowContent() {
-            // Iterates through all available controls and displays them
-
             foreach (TextBox box in MyTextBoxes) {
                 box.Show();
             }
@@ -136,9 +150,11 @@ namespace Calendar {
             }
         }
 
+        /// <summary>
+        /// Adds a new task to the dashboard
+        /// </summary>
+        /// <param name="content">Task content</param>
         public void AddTask(string content) {
-            // Adds a new task to the dashboard
-
             Services.AddTask(content);
 
             // Update the local collection of tasks and display them again
@@ -147,21 +163,22 @@ namespace Calendar {
             GenerateLabelsAndButtons();
         }
 
+        /// <summary>
+        /// Retrieves all tasks from the DB table
+        /// </summary>
         public void FetchTasks() {
-            // Retrieves all tasks from the DB table
             var tasks = Services.GetAllTasks();
 
-            for (int i = 0; i < tasks.Count; i++)
-            {
+            for (int i = 0; i < tasks.Count; i++) {
                 labelNames.Add(tasks[i].Content);
             }
-            
+
         }
 
+        /// <summary>
+        /// // Deletes all available tasks
+        /// </summary>
         private void DeleteAllTasks() {
-            // Deletes all available tasks
-            // Opens a warning message box
-
             // Setup parameters for message box
 
             string message = "Are you sure?";
@@ -171,42 +188,40 @@ namespace Calendar {
 
             // Open message box with the parameters 
 
-            result = MessageBox.Show(message, caption, buttons);
-
-            // Only execute deletion if yes has been selected
-
-            if (result == DialogResult.Yes) {
-
-                Services.DeleteAllTasks();
-
-                UpdateLabelsAndButtons();
+            int taskCount = Services.GetAllTasks().Count;
+            if (taskCount > 0) {
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == DialogResult.Yes) {
+                    Services.DeleteAllTasks();
+                    UpdateLabelsAndButtons();
+                }
             }
         }
 
+        /// <summary>
+        /// Deletes a task from the DB based on it's content
+        /// </summary>
+        /// <param name="content">Task content</param>
         private void DeleteTask(string content) {
-            // Deletes a task from the DB based on it's content
-
             Services.DeleteTask(content);
-            
+
             // Refresh Tasks
 
             UpdateLabelsAndButtons();
             FetchTasks();
             GenerateLabelsAndButtons();
-
         }
 
+        /// <summary>
+        /// Generates label objects based on the values returned from the Fetchtasks() values stored in labelNames
+        /// </summary>
         public void GenerateLabelsAndButtons() {
-            // Generates label objects based on the values returned from the Fetchtasks() values stored in labelNames
-            // labelX -> Defines the starting point of the labels on the X axis
-            // labelY -> Defines the starting point of the labels on the Y axis
-
             foreach (var text in labelNames) {
                 Label label = new Label();
                 label.Text = text;
                 label.Size = new Size(60, 20);
                 label.Location = new Point(labelStartX, labelStartY);
-                label.BackColor = System.Drawing.Color.Transparent;
+                label.BackColor = Color.Transparent;
                 label.AutoSize = true;
                 label.Font = new Font("Segoe UI", 20);
                 label.MaximumSize = new Size(260, 0);
@@ -229,13 +244,13 @@ namespace Calendar {
                 form.Controls.Add(label);
                 form.Controls.Add(delete);
             }
-
             labelStartY = 90;
         }
 
+        /// <summary>
+        /// Cleares all stored info about the tasks so that it can be retrieved again if a change has been made
+        /// </summary>
         public void UpdateLabelsAndButtons() {
-            // Cleares all stored info about the tasks so that it can be retrieved again if a change has been made
-
             foreach (var label in MyLabels) {
                 form.Controls.Remove(label);
             }
@@ -249,9 +264,10 @@ namespace Calendar {
             MyDelete.Clear();
         }
 
+        /// <summary>
+        /// Separately initializing each control on this page
+        /// </summary>
         private void GenerateControls() {
-            // Separately initializing each control on this page
-
             buttonAdd = new Button();
             buttonAdd.Click += AddClicked;
             buttonDeleteAll = new Button();
@@ -264,14 +280,17 @@ namespace Calendar {
             labelInfo.AutoSize = true;
         }
 
+        /// <summary>
+        /// Add all controls to separate collecton for use in other methods and easier addition to the Form's Controls list
+        /// </summary>
         private void IntitializeArrays() {
-            // Add all controls to separate collecton for use in other methods and easier addition to the Form's Controls list
-
             MyButtons.AddRange(new Button[] { buttonAdd, buttonDeleteAll });
-
             MyTextBoxes.AddRange(new TextBox[] { textBoxInput });
         }
 
+        /// <summary>
+        /// Sets the size of all Controls
+        /// </summary>
         private void SetControlsSize() {
             // Text Boxes //
 
@@ -290,6 +309,9 @@ namespace Calendar {
             labelInfo.Size = new Size(260, 20);
         }
 
+        /// <summary>
+        /// Adds text to Controls
+        /// </summary>
         private void SetControlsText() {
             // Buttons //
 
@@ -303,6 +325,11 @@ namespace Calendar {
             textBoxInput.Name = "InputTextBox";
         }
 
+        /// <summary>
+        /// Sets the position of all Controls
+        /// </summary>
+        /// <param name="buttonStartX">Start X position of buttons</param>
+        /// <param name="buttonStartY">Start Y position of buttons</param>
         private void SetControlsPosition(int buttonStartX, int buttonStartY) {
             // Text Boxes //
 
@@ -320,16 +347,18 @@ namespace Calendar {
             labelInfo.Location = new Point(20, 20);
         }
 
+        /// <summary>
+        /// Starts a second thread to update the clock and weather
+        /// </summary>
         private void RepeatUpdate() {
-            // Opens a second thread to update the clock and weather
-
             Thread updateThread = new Thread(Update);
             updateThread.Start();
         }
 
+        /// <summary>
+        /// Second thread's job
+        /// </summary>
         private void Update() {
-            // Second thread's job
-
             // Get current time and synchronize to the system clock
             // Repeat every sixty seconds after the initial cycle
 
@@ -341,8 +370,7 @@ namespace Calendar {
             while (true) {
                 if (i > 0) {
                     wait = 60 * 1000;
-                }
-                else {
+                } else {
                     wait = startWait;
                     i++;
                 }
@@ -352,8 +380,11 @@ namespace Calendar {
             }
         }
 
+        /// <summary>
+        /// Returns a list of all controls
+        /// </summary>
+        /// <returns>A list of Controls</returns>
         public List<Control> getControls() {
-            // Returns a list of all controls
             // The return values is passed to the Form Controls array
 
             List<Control> controls = new List<Control>();
@@ -361,31 +392,44 @@ namespace Calendar {
             controls.Add(labelInfo);
             controls.AddRange(MyTextBoxes);
             controls.AddRange(MyButtons);
- 
+
             return controls;
-        }   
+        }
 
+        #endregion
+        #region Events
+
+        /// <summary>
+        /// Event handler bound to the Add button
+        /// </summary>
+        /// <param name="sender">Sender object</param>
+        /// <param name="e">Event parameters</param>
         public void AddClicked(object sender, EventArgs e) {
-            // Event handler bound to the Add button
-
             UpdateLabelsAndButtons();
             AddTask(textBoxInput.Text.Trim());
             textBoxInput.Text = "";
         }
 
+        /// <summary>
+        /// Event handler bound to the DeleteAll button
+        /// </summary>
+        /// <param name="sender">Sender object</param>
+        /// <param name="e">Event parameters</param>
         public void DeleteAllClicked(object sender, EventArgs e) {
-            // Event handler bound to the DeleteAll button
-
             DeleteAllTasks();
         }
 
+        /// <summary>
+        /// Event handler bound to each delete button
+        /// </summary>
+        /// <param name="sender">Sender object</param>
+        /// <param name="e">Event parameters</param>
         public void DeleteClicked(object sender, EventArgs e) {
-            // Event handler bound to each delete button
-
             Button send = (Button)sender;
             string text = send.Name;
-
             DeleteTask(text);
         }
+
+        #endregion
     }
 }

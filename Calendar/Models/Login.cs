@@ -1,49 +1,101 @@
-﻿/*
-    This is the first app page
-    Use it to create your user and then login
-*/
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
 using Calendar.Controller;
 using Calendar.Forms;
 
-namespace Calendar
-{
-    public class Login : Page
-    {
-        private const int sizeX = 60; // Defines the X size of the controls
-        private const int sizeY = 20; // Defines the Y size of the controls
-        private const int firstLabelX = 80; // Defines the starting X point of the labels
-        private const int firstLabelAndBoxY = 160; // Defines the starting Y point of the labels
-        private const int firstTextBoxX = 170; // Defines the starting X point of the text boxes
+namespace Calendar {
+    /// <summary>
+    /// This is the first app page
+    /// Use it to create your user and then login
+    /// </summary>
+    public class Login : Page {
+        #region Variables
 
-        // Labels //
+        /// <summary>
+        /// Defines the X size of the controls
+        /// </summary>
+        private const int sizeX = 60;
+        /// <summary>
+        /// Defines the Y size of the controls
+        /// </summary>
+        private const int sizeY = 20;
+        /// <summary>
+        /// Defines the starting X point of the labels
+        /// </summary>
+        private const int firstLabelX = 80;
+        /// <summary>
+        /// Defines the starting Y point of the labels
+        /// </summary>
+        private const int firstLabelAndBoxY = 160;
+        /// <summary>
+        /// Defines the starting X point of the text boxes
+        /// </summary>
+        private const int firstTextBoxX = 170;
 
+        /// <summary>
+        /// NameLabel object
+        /// </summary>
         private Label labelName;
+        /// <summary>
+        /// SurnameLabel object
+        /// </summary>
         private Label labelSurname;
+        /// <summary>
+        /// BirthdateLabel object
+        /// </summary>
         private Label labelBirthdate;
+        /// <summary>
+        /// GenderLabel object
+        /// </summary>
         private Label labelGender;
+        /// <summary>
+        /// CityLabel object
+        /// </summary>
         private Label labelCity;
+        /// <summary>
+        /// FormatLabel object
+        /// </summary>
         private Label labelFormat;
+        /// <summary>
+        /// ErrorLabel object
+        /// </summary>
         private Label labelError;
-
-        // Text Boxes //
-
+        
+        /// <summary>
+        /// NameTextBox object
+        /// </summary>
         private TextBox textBoxName;
+        /// <summary>
+        /// SurnametextBox object
+        /// </summary>
         private TextBox textBoxSurname;
+        /// <summary>
+        /// BirthdateTextBox object
+        /// </summary>
         private TextBox textBoxBirthdate;
+        /// <summary>
+        /// GendertextBox object
+        /// </summary>
         private TextBox textBoxGender;
+        /// <summary>
+        /// CitytextBox object
+        /// </summary>
         private TextBox textBoxCity;
 
-        // Buttons //
-
+        /// <summary>
+        /// LoginButton object
+        /// </summary>
         private Button buttonLogin;
 
-        public Login() : base()
-        {
+        #endregion
+        #region
+
+        /// <summary>
+        /// Constructor method
+        /// </summary>
+        public Login() : base() {
             GenerateControls(); // Initialize all controls
             SetControlsText(); // Set the text to the controls
             IntitializeArrays(); // Add the controls to their corresponging collection
@@ -52,15 +104,15 @@ namespace Calendar
             SetLabelsTransparency(); // Make the Labels' BG colour tranapsrent
         }
 
-        public bool CreateUser()
-        {
-            // Registers a valid user
-
+        /// <summary>
+        /// Registers a valid user
+        /// </summary>
+        /// <returns>True or False</returns>
+        public bool CreateUser() {
             List<string> info = new List<string>(MyTextBoxes.Select(x => x.Text).ToList());
             string date = Services.ReformatDate(info[2]);
 
-            if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels))
-            {
+            if (Services.CheckNull(info, MyLabels) && Services.CheckDate(date, MyLabels)) {
                 Services.CreateUser(info);
                 return true;
             }
@@ -68,50 +120,44 @@ namespace Calendar
             return false;
         }
 
-        public void HideContent()
-        {
-            // Iterates over all controls and hides them
-
-            foreach (TextBox box in MyTextBoxes)
-            {
+        /// <summary>
+        /// Iterates over all controls and hides them
+        /// </summary>
+        public void HideContent() {
+            foreach (TextBox box in MyTextBoxes) {
                 box.Hide();
             }
 
-            foreach (Label label in MyLabels)
-            {
+            foreach (Label label in MyLabels) {
                 label.Hide();
             }
 
-            foreach (Button button in MyButtons)
-            {
+            foreach (Button button in MyButtons) {
                 button.Hide();
             }
         }
 
-        public void ShowContent()
-        {
-            // Iterates over all controls and displays them
-
-            foreach (TextBox box in MyTextBoxes)
-            {
+        /// <summary>
+        /// Iterates over all controls and displays them
+        /// </summary>
+        public void ShowContent() {
+            foreach (TextBox box in MyTextBoxes) {
                 box.Show();
             }
 
-            foreach (Label label in MyLabels)
-            {
+            foreach (Label label in MyLabels) {
                 label.Show();
             }
 
-            foreach (Button button in MyButtons)
-            {
+            foreach (Button button in MyButtons) {
                 button.Show();
             }
         }
 
-        private void GenerateControls()
-        {
-            // Initializes all controls
-
+        /// <summary>
+        ///             // Initializes all controls
+        /// </summary>
+        private void GenerateControls() {
             // Labels //
 
             labelName = new Label();
@@ -136,29 +182,29 @@ namespace Calendar
             buttonLogin = new Button();
         }
 
-        private void IntitializeArrays()
-        {
-            // Adds all controls to their corresponding collection
-
+        /// <summary>
+        /// Adds all controls to their corresponding collection
+        /// </summary>
+        private void IntitializeArrays() {
             MyButtons.Add(buttonLogin);
-
             MyLabels.AddRange(new Label[] { labelName, labelSurname, labelBirthdate, labelGender, labelCity, labelFormat, labelError });
-
             MyTextBoxes.AddRange(new TextBox[] { textBoxName, textBoxSurname, textBoxBirthdate, textBoxGender, textBoxCity });
         }
 
-        private void SetControlsPosition(int textStartX, int textStartY, int boxStartX, int boxStartY)
-        {
-            // Sets the position for every control element
-
-            for (int i = 0; i < MyLabels.Count - 2; i++)
-            {
+        /// <summary>
+        /// Sets the position for every control element
+        /// </summary>
+        /// <param name="textStartX">Labels start X</param>
+        /// <param name="textStartY">Labels start Y</param>
+        /// <param name="boxStartX">textBoxes start X</param>
+        /// <param name="boxStartY">TextBoxes start Y</param>
+        private void SetControlsPosition(int textStartX, int textStartY, int boxStartX, int boxStartY) {
+            for (int i = 0; i < MyLabels.Count - 2; i++) {
                 MyLabels[i].Location = new Point(textStartX, textStartY);
                 textStartY += 30;
             }
 
-            foreach (var textBox in MyTextBoxes)
-            {
+            foreach (var textBox in MyTextBoxes) {
                 textBox.Location = new Point(boxStartX, boxStartY);
                 boxStartY += 30;
             }
@@ -169,27 +215,27 @@ namespace Calendar
             MyButtons[0].Location = new Point(130, 340); // login button
         }
 
-        private void SetControlsSize(int x, int y)
-        {
-            // Sets the size for all controls
-
-            for (int i = 0; i < MyLabels.Count; i++)
-            {
+        /// <summary>
+        /// Sets the size for all controls
+        /// </summary>
+        /// <param name="x">Width</param>
+        /// <param name="y">Height</param>
+        private void SetControlsSize(int x, int y) {
+            for (int i = 0; i < MyLabels.Count; i++) {
                 MyLabels[i].Size = new Size(x, y);
             }
 
-            foreach (var textBox in MyTextBoxes)
-            {
+            foreach (var textBox in MyTextBoxes) {
                 textBox.Size = new Size(x, y);
             }
 
             MyButtons[0].Size = new Size(x, y + 5);
         }
 
-        private void SetControlsText()
-        {
-            // Adds text to the controls if necessary
-
+        /// <summary>
+        /// Adds text to the controls if necessary
+        /// </summary>
+        private void SetControlsText() {
             labelName.Text = "Name";
             labelSurname.Text = "Surname";
             labelBirthdate.Text = "Birthdate";
@@ -198,25 +244,24 @@ namespace Calendar
             labelFormat.Text = "dd/mm/yyyy";
             labelError.Text = "";
             labelError.Name = "labelError";
-
             buttonLogin.Text = "Login";
             buttonLogin.Name = "LoginButton";
         }
 
-        private void SetLabelsTransparency()
-        {
-            // Makes the BG of all labels transparent
-
-            for (int i = 0; i < MyLabels.Count; i++)
-            {
+        /// <summary>
+        /// Makes the BG of all labels transparent
+        /// </summary>
+        private void SetLabelsTransparency() {
+            for (int i = 0; i < MyLabels.Count; i++) {
                 MyLabels[i].BackColor = Color.Transparent;
             }
         }
 
-        public List<Control> getControls()
-        {
-            // Returns a collection of all controls to be added to the Form Controls collection
-
+        /// <summary>
+        /// Returns a collection of all controls to be added to the Form Controls collection
+        /// </summary>
+        /// <returns>List of Controls</returns>
+        public List<Control> getControls() {
             List<Control> controls = new List<Control>();
 
             controls.AddRange(MyLabels);
@@ -225,5 +270,7 @@ namespace Calendar
 
             return controls;
         }
+
+        #endregion
     }
 }

@@ -2,13 +2,63 @@
 using System.Windows.Forms;
 
 namespace Calendar.Forms {
+    /// <summary>
+    /// Page parent class
+    /// </summary>
     public class Page {
-        protected List<Button> myButtons; // Collection of all buttons
-        protected List<TextBox> myTextBoxes; // Collection of all text boxes
-        protected List<Label> myLabels; // Collection of all labels
-        protected List<Button> myDelete; // Collection of all delete buttons
-        protected List<string> labelNames; // Auxiliary collection to store info from DB
+        #region Variables
 
+        /// <summary>
+        /// Collection of all buttons
+        /// </summary>
+        protected List<Button> myButtons;
+        /// <summary>
+        /// Collection of all text boxes
+        /// </summary>
+        protected List<TextBox> myTextBoxes;
+        /// <summary>
+        /// Collection of all labels
+        /// </summary>
+        protected List<Label> myLabels;
+        /// <summary>
+        /// Collection of all delete buttons
+        /// </summary>
+        protected List<Button> myDelete;
+        /// <summary>
+        /// Auxiliary collection to store info from DB
+        /// </summary>
+        protected List<string> labelNames;
+
+        #endregion
+        #region Properties
+
+        /// <summary>
+        /// MyButtons property
+        /// </summary>
+        public List<Button> MyButtons { get { return this.myButtons; } }
+        /// <summary>
+        /// MyTextBoxes property
+        /// </summary>
+        public List<TextBox> MyTextBoxes { get { return this.myTextBoxes; } }
+        /// <summary>
+        /// MyLabels property
+        /// </summary>
+        public List<Label> MyLabels { get { return this.myLabels; } }
+        /// <summary>
+        /// MyDelete property
+        /// </summary>
+        public List<Button> MyDelete { get { return this.myDelete; } }
+        /// <summary>
+        /// LabelNames property
+        /// </summary>
+        public List<string> LabelNames { get { return this.labelNames; } }
+
+        #endregion
+        #region Methods
+
+        /// <summary>
+        /// Class constructor
+        /// </summary>
         public Page() {
             myButtons = new List<Button>();
             myTextBoxes = new List<TextBox>();
@@ -16,10 +66,7 @@ namespace Calendar.Forms {
             labelNames = new List<string>();
             myDelete = new List<Button>();
         }
-        public List<Button> MyButtons { get { return this.myButtons; } }
-        public List<TextBox> MyTextBoxes { get { return this.myTextBoxes; } }
-        public List<Label> MyLabels { get { return this.myLabels; } }
-        public List<Button> MyDelete { get { return this.myDelete; } }
-        public List<string> LabelNames { get { return this.labelNames; } }
+
+        #endregion
     }
 }

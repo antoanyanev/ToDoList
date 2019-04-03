@@ -1,0 +1,282 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/Toni/Desktop/New folder/Calendar",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "7iAMZAEPXnwxmXrCeig6wQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "os3h56MFSAMIn5Fl3EE0nw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "VbQpW+lBOg/owpO3D75qXA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Controller.Services.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Controller.Services.html",
+          "hash": "jKvzjtigM3dO3ThEuMxPVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Controller.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Controller.html",
+          "hash": "cmzQVzVkQojd8lxF5Mnkjg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Form1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Form1.html",
+          "hash": "mUYle6OwrefniXRHfgVWQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Forms.Page.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Forms.Page.html",
+          "hash": "Hh9cjtRHsoTxdu+IRSjTGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Forms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Forms.html",
+          "hash": "7iOOnlzsZkOqzZWs9tl/Hg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Login.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Login.html",
+          "hash": "K3yIsNkPwSCTSrW4RF27jA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.DataEntities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.DataEntities.html",
+          "hash": "skJ13SgFgqBYLdb13hchGw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.DataEntities1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.DataEntities1.html",
+          "hash": "efmTMIeqfsOSxF2q5nB1zw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.Task.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.Task.html",
+          "hash": "/sa5IpcI+R4CF9cyzkFfeg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.User.html",
+          "hash": "c+fm2sOGZcuiNFPj1NpUCg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.html",
+          "hash": "kVAnooe9T5WUlFA78PiJsg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.ToDo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.ToDo.html",
+          "hash": "fwNWW/wYanuRPBp16kRQ1A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.html",
+          "hash": "SF5iogmkWr7vuo42cZnrYA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Tg8Bn74hlRXP0h+/h3198A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "Sg+nKmnHP++YKMT39ruhpw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 13,
+          "skipped_file_count": 12
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
