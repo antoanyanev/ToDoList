@@ -6,7 +6,7 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Calendar.Models;
+using Calendar.Models.DataModels;
 
 namespace Calendar.Controller {
     /// This is the Services controller class.
@@ -151,7 +151,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <returns>True or False</returns>
         public static bool CheckLogin() {
-            var context = new DataEntities();
+            var context = new UserEntity();
 
             if (!context.Users.Any()) {
                 return false;
@@ -166,7 +166,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <param name="info">Info of the user</param>
         public static void CreateUser(List<string> info) {
-            var context = new DataEntities();
+            var context = new UserEntity();
             var user = new User() {
                 Name = info[0],
                 Surname = info[1],
@@ -184,7 +184,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <returns>User</returns>
         public static User GetUser() {
-            var context = new DataEntities();
+            var context = new UserEntity();
             return context.Users.FirstOrDefault<User>();
         }
 
@@ -193,7 +193,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <param name="content">Content of the task</param>
         public static void AddTask(string content) {
-            var context = new DataEntities1();
+            var context = new TaskEntity();
 
             if (content != String.Empty) {
 
@@ -211,7 +211,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <returns>A list of all tasks</returns>
         public static List<Task> GetAllTasks() {
-            var context = new DataEntities1();
+            var context = new TaskEntity();
             return context.Tasks.ToList();
         }
 
@@ -219,7 +219,7 @@ namespace Calendar.Controller {
         /// Deletes all the tasks from the database
         /// </summary>
         public static void DeleteAllTasks() {
-            var context = new DataEntities1();
+            var context = new TaskEntity();
             context.Tasks.RemoveRange(context.Tasks);
             context.SaveChanges();
         }
@@ -229,7 +229,7 @@ namespace Calendar.Controller {
         /// </summary>
         /// <param name="content">Task content</param>
         public static void DeleteTask(string content) {
-            var context = new DataEntities1();
+            var context = new TaskEntity();
             context.Tasks.Remove(context.Tasks.Single(t => t.Content == content));
             context.SaveChanges();
         }

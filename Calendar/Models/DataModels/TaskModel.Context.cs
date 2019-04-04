@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calendar.Models
+namespace Calendar.Models.DataModels
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataEntities : DbContext
+    public partial class TaskEntity : DbContext
     {
-        public DataEntities()
-            : base("name=DataEntities")
+        public TaskEntity()
+            : base("name=TaskEntity")
         {
         }
     
@@ -25,6 +25,6 @@ namespace Calendar.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
     }
 }

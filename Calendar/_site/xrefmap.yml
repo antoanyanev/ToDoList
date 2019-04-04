@@ -436,217 +436,217 @@ references:
   isSpec: "True"
   fullName: Calendar.Login.ShowContent
   nameWithType: Login.ShowContent
-- uid: Calendar.Models
-  name: Calendar.Models
-  href: api/Calendar.Models.html
-  commentId: N:Calendar.Models
-  fullName: Calendar.Models
-  nameWithType: Calendar.Models
-- uid: Calendar.Models.DataEntities
+- uid: Calendar.Models.DataModels
+  name: Calendar.Models.DataModels
+  href: api/Calendar.Models.DataModels.html
+  commentId: N:Calendar.Models.DataModels
+  fullName: Calendar.Models.DataModels
+  nameWithType: Calendar.Models.DataModels
+- uid: Calendar.Models.DataModels.DataEntities
   name: DataEntities
-  href: api/Calendar.Models.DataEntities.html
-  commentId: T:Calendar.Models.DataEntities
-  fullName: Calendar.Models.DataEntities
+  href: api/Calendar.Models.DataModels.DataEntities.html
+  commentId: T:Calendar.Models.DataModels.DataEntities
+  fullName: Calendar.Models.DataModels.DataEntities
   nameWithType: DataEntities
-- uid: Calendar.Models.DataEntities.#ctor
+- uid: Calendar.Models.DataModels.DataEntities.#ctor
   name: DataEntities()
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities__ctor
-  commentId: M:Calendar.Models.DataEntities.#ctor
-  fullName: Calendar.Models.DataEntities.DataEntities()
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities__ctor
+  commentId: M:Calendar.Models.DataModels.DataEntities.#ctor
+  fullName: Calendar.Models.DataModels.DataEntities.DataEntities()
   nameWithType: DataEntities.DataEntities()
-- uid: Calendar.Models.DataEntities.#ctor*
+- uid: Calendar.Models.DataModels.DataEntities.#ctor*
   name: DataEntities
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities__ctor_
-  commentId: Overload:Calendar.Models.DataEntities.#ctor
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities__ctor_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities.#ctor
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities.DataEntities
+  fullName: Calendar.Models.DataModels.DataEntities.DataEntities
   nameWithType: DataEntities.DataEntities
-- uid: Calendar.Models.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
+- uid: Calendar.Models.DataModels.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
   name: OnModelCreating(DbModelBuilder)
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities_OnModelCreating_System_Data_Entity_DbModelBuilder_
-  commentId: M:Calendar.Models.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
-  fullName: Calendar.Models.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities_OnModelCreating_System_Data_Entity_DbModelBuilder_
+  commentId: M:Calendar.Models.DataModels.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
+  fullName: Calendar.Models.DataModels.DataEntities.OnModelCreating(System.Data.Entity.DbModelBuilder)
   nameWithType: DataEntities.OnModelCreating(DbModelBuilder)
-- uid: Calendar.Models.DataEntities.OnModelCreating*
+- uid: Calendar.Models.DataModels.DataEntities.OnModelCreating*
   name: OnModelCreating
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities_OnModelCreating_
-  commentId: Overload:Calendar.Models.DataEntities.OnModelCreating
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities_OnModelCreating_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities.OnModelCreating
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities.OnModelCreating
+  fullName: Calendar.Models.DataModels.DataEntities.OnModelCreating
   nameWithType: DataEntities.OnModelCreating
-- uid: Calendar.Models.DataEntities.Users
+- uid: Calendar.Models.DataModels.DataEntities.Users
   name: Users
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities_Users
-  commentId: P:Calendar.Models.DataEntities.Users
-  fullName: Calendar.Models.DataEntities.Users
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities_Users
+  commentId: P:Calendar.Models.DataModels.DataEntities.Users
+  fullName: Calendar.Models.DataModels.DataEntities.Users
   nameWithType: DataEntities.Users
-- uid: Calendar.Models.DataEntities.Users*
+- uid: Calendar.Models.DataModels.DataEntities.Users*
   name: Users
-  href: api/Calendar.Models.DataEntities.html#Calendar_Models_DataEntities_Users_
-  commentId: Overload:Calendar.Models.DataEntities.Users
+  href: api/Calendar.Models.DataModels.DataEntities.html#Calendar_Models_DataModels_DataEntities_Users_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities.Users
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities.Users
+  fullName: Calendar.Models.DataModels.DataEntities.Users
   nameWithType: DataEntities.Users
-- uid: Calendar.Models.DataEntities1
+- uid: Calendar.Models.DataModels.DataEntities1
   name: DataEntities1
-  href: api/Calendar.Models.DataEntities1.html
-  commentId: T:Calendar.Models.DataEntities1
-  fullName: Calendar.Models.DataEntities1
+  href: api/Calendar.Models.DataModels.DataEntities1.html
+  commentId: T:Calendar.Models.DataModels.DataEntities1
+  fullName: Calendar.Models.DataModels.DataEntities1
   nameWithType: DataEntities1
-- uid: Calendar.Models.DataEntities1.#ctor
+- uid: Calendar.Models.DataModels.DataEntities1.#ctor
   name: DataEntities1()
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1__ctor
-  commentId: M:Calendar.Models.DataEntities1.#ctor
-  fullName: Calendar.Models.DataEntities1.DataEntities1()
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1__ctor
+  commentId: M:Calendar.Models.DataModels.DataEntities1.#ctor
+  fullName: Calendar.Models.DataModels.DataEntities1.DataEntities1()
   nameWithType: DataEntities1.DataEntities1()
-- uid: Calendar.Models.DataEntities1.#ctor*
+- uid: Calendar.Models.DataModels.DataEntities1.#ctor*
   name: DataEntities1
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1__ctor_
-  commentId: Overload:Calendar.Models.DataEntities1.#ctor
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1__ctor_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities1.#ctor
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities1.DataEntities1
+  fullName: Calendar.Models.DataModels.DataEntities1.DataEntities1
   nameWithType: DataEntities1.DataEntities1
-- uid: Calendar.Models.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
+- uid: Calendar.Models.DataModels.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
   name: OnModelCreating(DbModelBuilder)
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1_OnModelCreating_System_Data_Entity_DbModelBuilder_
-  commentId: M:Calendar.Models.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
-  fullName: Calendar.Models.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1_OnModelCreating_System_Data_Entity_DbModelBuilder_
+  commentId: M:Calendar.Models.DataModels.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
+  fullName: Calendar.Models.DataModels.DataEntities1.OnModelCreating(System.Data.Entity.DbModelBuilder)
   nameWithType: DataEntities1.OnModelCreating(DbModelBuilder)
-- uid: Calendar.Models.DataEntities1.OnModelCreating*
+- uid: Calendar.Models.DataModels.DataEntities1.OnModelCreating*
   name: OnModelCreating
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1_OnModelCreating_
-  commentId: Overload:Calendar.Models.DataEntities1.OnModelCreating
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1_OnModelCreating_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities1.OnModelCreating
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities1.OnModelCreating
+  fullName: Calendar.Models.DataModels.DataEntities1.OnModelCreating
   nameWithType: DataEntities1.OnModelCreating
-- uid: Calendar.Models.DataEntities1.Tasks
+- uid: Calendar.Models.DataModels.DataEntities1.Tasks
   name: Tasks
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1_Tasks
-  commentId: P:Calendar.Models.DataEntities1.Tasks
-  fullName: Calendar.Models.DataEntities1.Tasks
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1_Tasks
+  commentId: P:Calendar.Models.DataModels.DataEntities1.Tasks
+  fullName: Calendar.Models.DataModels.DataEntities1.Tasks
   nameWithType: DataEntities1.Tasks
-- uid: Calendar.Models.DataEntities1.Tasks*
+- uid: Calendar.Models.DataModels.DataEntities1.Tasks*
   name: Tasks
-  href: api/Calendar.Models.DataEntities1.html#Calendar_Models_DataEntities1_Tasks_
-  commentId: Overload:Calendar.Models.DataEntities1.Tasks
+  href: api/Calendar.Models.DataModels.DataEntities1.html#Calendar_Models_DataModels_DataEntities1_Tasks_
+  commentId: Overload:Calendar.Models.DataModels.DataEntities1.Tasks
   isSpec: "True"
-  fullName: Calendar.Models.DataEntities1.Tasks
+  fullName: Calendar.Models.DataModels.DataEntities1.Tasks
   nameWithType: DataEntities1.Tasks
-- uid: Calendar.Models.Task
+- uid: Calendar.Models.DataModels.Task
   name: Task
-  href: api/Calendar.Models.Task.html
-  commentId: T:Calendar.Models.Task
-  fullName: Calendar.Models.Task
+  href: api/Calendar.Models.DataModels.Task.html
+  commentId: T:Calendar.Models.DataModels.Task
+  fullName: Calendar.Models.DataModels.Task
   nameWithType: Task
-- uid: Calendar.Models.Task.Content
+- uid: Calendar.Models.DataModels.Task.Content
   name: Content
-  href: api/Calendar.Models.Task.html#Calendar_Models_Task_Content
-  commentId: P:Calendar.Models.Task.Content
-  fullName: Calendar.Models.Task.Content
+  href: api/Calendar.Models.DataModels.Task.html#Calendar_Models_DataModels_Task_Content
+  commentId: P:Calendar.Models.DataModels.Task.Content
+  fullName: Calendar.Models.DataModels.Task.Content
   nameWithType: Task.Content
-- uid: Calendar.Models.Task.Content*
+- uid: Calendar.Models.DataModels.Task.Content*
   name: Content
-  href: api/Calendar.Models.Task.html#Calendar_Models_Task_Content_
-  commentId: Overload:Calendar.Models.Task.Content
+  href: api/Calendar.Models.DataModels.Task.html#Calendar_Models_DataModels_Task_Content_
+  commentId: Overload:Calendar.Models.DataModels.Task.Content
   isSpec: "True"
-  fullName: Calendar.Models.Task.Content
+  fullName: Calendar.Models.DataModels.Task.Content
   nameWithType: Task.Content
-- uid: Calendar.Models.Task.id
+- uid: Calendar.Models.DataModels.Task.id
   name: id
-  href: api/Calendar.Models.Task.html#Calendar_Models_Task_id
-  commentId: P:Calendar.Models.Task.id
-  fullName: Calendar.Models.Task.id
+  href: api/Calendar.Models.DataModels.Task.html#Calendar_Models_DataModels_Task_id
+  commentId: P:Calendar.Models.DataModels.Task.id
+  fullName: Calendar.Models.DataModels.Task.id
   nameWithType: Task.id
-- uid: Calendar.Models.Task.id*
+- uid: Calendar.Models.DataModels.Task.id*
   name: id
-  href: api/Calendar.Models.Task.html#Calendar_Models_Task_id_
-  commentId: Overload:Calendar.Models.Task.id
+  href: api/Calendar.Models.DataModels.Task.html#Calendar_Models_DataModels_Task_id_
+  commentId: Overload:Calendar.Models.DataModels.Task.id
   isSpec: "True"
-  fullName: Calendar.Models.Task.id
+  fullName: Calendar.Models.DataModels.Task.id
   nameWithType: Task.id
-- uid: Calendar.Models.User
+- uid: Calendar.Models.DataModels.User
   name: User
-  href: api/Calendar.Models.User.html
-  commentId: T:Calendar.Models.User
-  fullName: Calendar.Models.User
+  href: api/Calendar.Models.DataModels.User.html
+  commentId: T:Calendar.Models.DataModels.User
+  fullName: Calendar.Models.DataModels.User
   nameWithType: User
-- uid: Calendar.Models.User.Birthdate
+- uid: Calendar.Models.DataModels.User.Birthdate
   name: Birthdate
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Birthdate
-  commentId: P:Calendar.Models.User.Birthdate
-  fullName: Calendar.Models.User.Birthdate
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Birthdate
+  commentId: P:Calendar.Models.DataModels.User.Birthdate
+  fullName: Calendar.Models.DataModels.User.Birthdate
   nameWithType: User.Birthdate
-- uid: Calendar.Models.User.Birthdate*
+- uid: Calendar.Models.DataModels.User.Birthdate*
   name: Birthdate
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Birthdate_
-  commentId: Overload:Calendar.Models.User.Birthdate
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Birthdate_
+  commentId: Overload:Calendar.Models.DataModels.User.Birthdate
   isSpec: "True"
-  fullName: Calendar.Models.User.Birthdate
+  fullName: Calendar.Models.DataModels.User.Birthdate
   nameWithType: User.Birthdate
-- uid: Calendar.Models.User.City
+- uid: Calendar.Models.DataModels.User.City
   name: City
-  href: api/Calendar.Models.User.html#Calendar_Models_User_City
-  commentId: P:Calendar.Models.User.City
-  fullName: Calendar.Models.User.City
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_City
+  commentId: P:Calendar.Models.DataModels.User.City
+  fullName: Calendar.Models.DataModels.User.City
   nameWithType: User.City
-- uid: Calendar.Models.User.City*
+- uid: Calendar.Models.DataModels.User.City*
   name: City
-  href: api/Calendar.Models.User.html#Calendar_Models_User_City_
-  commentId: Overload:Calendar.Models.User.City
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_City_
+  commentId: Overload:Calendar.Models.DataModels.User.City
   isSpec: "True"
-  fullName: Calendar.Models.User.City
+  fullName: Calendar.Models.DataModels.User.City
   nameWithType: User.City
-- uid: Calendar.Models.User.Gender
+- uid: Calendar.Models.DataModels.User.Gender
   name: Gender
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Gender
-  commentId: P:Calendar.Models.User.Gender
-  fullName: Calendar.Models.User.Gender
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Gender
+  commentId: P:Calendar.Models.DataModels.User.Gender
+  fullName: Calendar.Models.DataModels.User.Gender
   nameWithType: User.Gender
-- uid: Calendar.Models.User.Gender*
+- uid: Calendar.Models.DataModels.User.Gender*
   name: Gender
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Gender_
-  commentId: Overload:Calendar.Models.User.Gender
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Gender_
+  commentId: Overload:Calendar.Models.DataModels.User.Gender
   isSpec: "True"
-  fullName: Calendar.Models.User.Gender
+  fullName: Calendar.Models.DataModels.User.Gender
   nameWithType: User.Gender
-- uid: Calendar.Models.User.id
+- uid: Calendar.Models.DataModels.User.id
   name: id
-  href: api/Calendar.Models.User.html#Calendar_Models_User_id
-  commentId: P:Calendar.Models.User.id
-  fullName: Calendar.Models.User.id
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_id
+  commentId: P:Calendar.Models.DataModels.User.id
+  fullName: Calendar.Models.DataModels.User.id
   nameWithType: User.id
-- uid: Calendar.Models.User.id*
+- uid: Calendar.Models.DataModels.User.id*
   name: id
-  href: api/Calendar.Models.User.html#Calendar_Models_User_id_
-  commentId: Overload:Calendar.Models.User.id
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_id_
+  commentId: Overload:Calendar.Models.DataModels.User.id
   isSpec: "True"
-  fullName: Calendar.Models.User.id
+  fullName: Calendar.Models.DataModels.User.id
   nameWithType: User.id
-- uid: Calendar.Models.User.Name
+- uid: Calendar.Models.DataModels.User.Name
   name: Name
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Name
-  commentId: P:Calendar.Models.User.Name
-  fullName: Calendar.Models.User.Name
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Name
+  commentId: P:Calendar.Models.DataModels.User.Name
+  fullName: Calendar.Models.DataModels.User.Name
   nameWithType: User.Name
-- uid: Calendar.Models.User.Name*
+- uid: Calendar.Models.DataModels.User.Name*
   name: Name
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Name_
-  commentId: Overload:Calendar.Models.User.Name
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Name_
+  commentId: Overload:Calendar.Models.DataModels.User.Name
   isSpec: "True"
-  fullName: Calendar.Models.User.Name
+  fullName: Calendar.Models.DataModels.User.Name
   nameWithType: User.Name
-- uid: Calendar.Models.User.Surname
+- uid: Calendar.Models.DataModels.User.Surname
   name: Surname
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Surname
-  commentId: P:Calendar.Models.User.Surname
-  fullName: Calendar.Models.User.Surname
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Surname
+  commentId: P:Calendar.Models.DataModels.User.Surname
+  fullName: Calendar.Models.DataModels.User.Surname
   nameWithType: User.Surname
-- uid: Calendar.Models.User.Surname*
+- uid: Calendar.Models.DataModels.User.Surname*
   name: Surname
-  href: api/Calendar.Models.User.html#Calendar_Models_User_Surname_
-  commentId: Overload:Calendar.Models.User.Surname
+  href: api/Calendar.Models.DataModels.User.html#Calendar_Models_DataModels_User_Surname_
+  commentId: Overload:Calendar.Models.DataModels.User.Surname
   isSpec: "True"
-  fullName: Calendar.Models.User.Surname
+  fullName: Calendar.Models.DataModels.User.Surname
   nameWithType: User.Surname
 - uid: Calendar.ToDo
   name: ToDo

@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/Toni/Desktop/New folder/Calendar",
+  "source_base_path": "C:/Users/Toni/Desktop/molq/Calendar",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "7iAMZAEPXnwxmXrCeig6wQ=="
+          "hash": "BVfsLmBIeHf3cM2oBoCvdA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "os3h56MFSAMIn5Fl3EE0nw=="
+          "hash": "tInn4EkC7Bc6gKkTmjXTFQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "VbQpW+lBOg/owpO3D75qXA=="
+          "hash": "9eRFCpUnPuDFLE+eeJn1ww=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.Controller.Services.html",
-          "hash": "jKvzjtigM3dO3ThEuMxPVw=="
+          "hash": "5p6qkmjyZ/9OVR9wewvyxw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "cmzQVzVkQojd8lxF5Mnkjg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.Form1.html",
-          "hash": "mUYle6OwrefniXRHfgVWQQ=="
+          "hash": "OZMYR1HU8RXnh/JqbrKb6g=="
         }
       },
       "is_incremental": false,
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.Forms.Page.html",
-          "hash": "Hh9cjtRHsoTxdu+IRSjTGw=="
+          "hash": "PTkAF7qAosUtw8aSEi6E1g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "7iOOnlzsZkOqzZWs9tl/Hg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,70 +117,70 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.Login.html",
-          "hash": "K3yIsNkPwSCTSrW4RF27jA=="
+          "hash": "WQ93wH7wDwXIbH5QchYvOw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.DataEntities.yml",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.DataEntities.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calendar.Models.DataEntities.html",
-          "hash": "skJ13SgFgqBYLdb13hchGw=="
+          "relative_path": "api/Calendar.Models.DataModels.DataEntities.html",
+          "hash": "6H8QgwVjI7EAwwuxPo1nlw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.DataEntities1.yml",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.DataEntities1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calendar.Models.DataEntities1.html",
-          "hash": "efmTMIeqfsOSxF2q5nB1zw=="
+          "relative_path": "api/Calendar.Models.DataModels.DataEntities1.html",
+          "hash": "Ug3B/yJrHGrafZGG0VgIPQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.Task.yml",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.Task.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calendar.Models.Task.html",
-          "hash": "/sa5IpcI+R4CF9cyzkFfeg=="
+          "relative_path": "api/Calendar.Models.DataModels.Task.html",
+          "hash": "inbTK8SY88Bs8t8+yA89Iw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.User.yml",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.User.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calendar.Models.User.html",
-          "hash": "c+fm2sOGZcuiNFPj1NpUCg=="
+          "relative_path": "api/Calendar.Models.DataModels.User.html",
+          "hash": "hMJ2o+NsmnDtf+V6lNy7wg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.yml",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calendar.Models.html",
-          "hash": "kVAnooe9T5WUlFA78PiJsg=="
+          "relative_path": "api/Calendar.Models.DataModels.html",
+          "hash": "paEnew5+woEgdyZhKebkMA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.ToDo.html",
-          "hash": "fwNWW/wYanuRPBp16kRQ1A=="
+          "hash": "o5F2SI9sS1q55d9Nfa1oDA=="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Tg8Bn74hlRXP0h+/h3198A=="
+          "hash": "VrpaAklxsEnT0y1aLuADrg=="
         }
       },
       "is_incremental": false,
@@ -235,37 +235,39 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 13,
-          "skipped_file_count": 12
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 13,
+          "skipped_file_count": 0
         }
       }
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

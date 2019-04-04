@@ -27,7 +27,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Content" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="DataEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="TaskEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tasks" EntityType="Self.Task" />
         </EntityContainer>
       </Schema>
@@ -35,7 +35,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataModel1StoreContainer" CdmEntityContainer="DataEntities1">
+        <EntityContainerMapping StorageEntityContainer="DataModel1StoreContainer" CdmEntityContainer="TaskEntity">
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="DataModel1.Task">
               <MappingFragment StoreEntitySet="Tasks">

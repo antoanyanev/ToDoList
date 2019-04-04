@@ -7,18 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calendar.Models
+namespace Calendar.Models.DataModels
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Task
     {
         public int id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Birthdate { get; set; }
-        public string Gender { get; set; }
-        public string City { get; set; }
+        public string Content { get; set; }
     }
 }
