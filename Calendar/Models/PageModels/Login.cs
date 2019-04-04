@@ -62,7 +62,7 @@ namespace Calendar {
         /// ErrorLabel object
         /// </summary>
         private Label labelError;
-        
+
         /// <summary>
         /// NameTextBox object
         /// </summary>

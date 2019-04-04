@@ -76,8 +76,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\PageModels\Login.cs" />
-    <Compile Include="Models\PageModels\Page.cs" />
     <Compile Include="Models\DataModels\Task.cs">
       <DependentUpon>TaskModel.tt</DependentUpon>
     </Compile>
@@ -96,7 +94,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TaskModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\PageModels\ToDo.cs" />
     <Compile Include="Models\DataModels\User.cs">
       <DependentUpon>UserModel.tt</DependentUpon>
     </Compile>
@@ -115,6 +112,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PageModels\Login.cs" />
+    <Compile Include="Models\PageModels\Page.cs" />
+    <Compile Include="Models\PageModels\ToDo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Test.cs" />
@@ -131,22 +131,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="Models\DataModels\UserModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <EntityDeploy Include="Models\DataModels\TaskModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TaskModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="api\index.md" />
     <None Include="articles\intro.md" />
     <None Include="articles\toc.md" />
     <None Include="docfx.json" />
     <None Include="index.md" />
+    <EntityDeploy Include="Models\DataModels\TaskModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TaskModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Models\DataModels\TaskModel.edmx.diagram">
       <DependentUpon>TaskModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Models\DataModels\UserModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UserModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Models\DataModels\UserModel.edmx.diagram">
       <DependentUpon>UserModel.edmx</DependentUpon>
     </None>

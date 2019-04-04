@@ -12,7 +12,7 @@
           "hash": "BVfsLmBIeHf3cM2oBoCvdA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "tInn4EkC7Bc6gKkTmjXTFQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -48,7 +48,7 @@
           "hash": "9eRFCpUnPuDFLE+eeJn1ww=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "5p6qkmjyZ/9OVR9wewvyxw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "cmzQVzVkQojd8lxF5Mnkjg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "OZMYR1HU8RXnh/JqbrKb6g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "PTkAF7qAosUtw8aSEi6E1g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "7iOOnlzsZkOqzZWs9tl/Hg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -120,31 +120,7 @@
           "hash": "WQ93wH7wDwXIbH5QchYvOw=="
         }
       },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.DataModels.DataEntities.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Calendar.Models.DataModels.DataEntities.html",
-          "hash": "6H8QgwVjI7EAwwuxPo1nlw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Calendar.Models.DataModels.DataEntities1.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Calendar.Models.DataModels.DataEntities1.html",
-          "hash": "Ug3B/yJrHGrafZGG0VgIPQ=="
-        }
-      },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -156,7 +132,19 @@
           "hash": "inbTK8SY88Bs8t8+yA89Iw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.TaskEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.DataModels.TaskEntity.html",
+          "hash": "nXpPE0IuU6PuoW8T0z4Qrg=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -168,7 +156,19 @@
           "hash": "hMJ2o+NsmnDtf+V6lNy7wg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Calendar.Models.DataModels.UserEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calendar.Models.DataModels.UserEntity.html",
+          "hash": "Nnyb+apMpPMDzqLsHfDIBg=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.Models.DataModels.html",
-          "hash": "paEnew5+woEgdyZhKebkMA=="
+          "hash": "eR2IDV9UOBPJEvbwGjaK6w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calendar.ToDo.html",
-          "hash": "o5F2SI9sS1q55d9Nfa1oDA=="
+          "hash": "k12w0q+tuf2xArhyV3JIiw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "SF5iogmkWr7vuo42cZnrYA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "VrpaAklxsEnT0y1aLuADrg=="
+          "hash": "wN10vY/jwSYQOMXh5CK6kA=="
         }
       },
       "is_incremental": false,
@@ -235,12 +235,10 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
         "TocDocumentProcessor": {
@@ -250,24 +248,24 @@
           "total_file_count": 0,
           "skipped_file_count": 0
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 0
-        },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 13,
-          "skipped_file_count": 0
+          "skipped_file_count": 13
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 3
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

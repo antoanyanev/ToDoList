@@ -7,7 +7,7 @@ using System.Threading;
 using Calendar.Controller;
 using Calendar.Forms;
 
-namespace Calendar {   
+namespace Calendar {
     /// <summary>
     /// This is the second and main page of the app
     /// Use it to store, add and delete your taks
@@ -85,7 +85,8 @@ namespace Calendar {
                 name = user.Name;
                 surname = user.Surname;
                 city = user.City;
-            } catch {
+            }
+            catch {
                 name = "";
                 surname = "";
                 city = "sofia";
@@ -370,7 +371,8 @@ namespace Calendar {
             while (true) {
                 if (i > 0) {
                     wait = 60 * 1000;
-                } else {
+                }
+                else {
                     wait = startWait;
                     i++;
                 }
