@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using Calendar.Views;
+using ToDo.Views;
 
-namespace Calendar {
+namespace ToDo {
     /// <summary>
     /// This is the main class of the Application
     /// Written by Antoan Yanev & Vladislav Milenkov
@@ -37,5 +37,10 @@ namespace Calendar {
         }
 
         #endregion
+
+        private void Form1_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

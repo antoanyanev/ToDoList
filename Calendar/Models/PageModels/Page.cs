@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Calendar.Forms {
+namespace ToDo.Forms {
     /// <summary>
     /// Page parent class
     /// </summary>

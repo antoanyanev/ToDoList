@@ -1,10 +1,10 @@
-﻿using Calendar.Controller;
+﻿using ToDo.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Calendar.Views {
+namespace ToDo.Views {
     /// <summary>
     /// This is the Display controller class.
     /// Used to display content on the screen.

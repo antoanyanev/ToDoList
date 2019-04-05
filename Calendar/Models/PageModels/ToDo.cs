@@ -4,10 +4,10 @@ using System.Drawing;
 using System.Collections.Generic;
 using System;
 using System.Threading;
-using Calendar.Controller;
-using Calendar.Forms;
+using ToDo.Controller;
+using ToDo.Forms;
 
-namespace Calendar {
+namespace ToDo {
     /// <summary>
     /// This is the second and main page of the app
     /// Use it to store, add and delete your taks

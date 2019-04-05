@@ -1,12 +1,12 @@
-﻿using Calendar.Controller;
-using Calendar.Models.DataModels;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ToDo.Controller;
+using ToDo.Models.DataModels;
 
-namespace Calendar {
+namespace ToDo {
     [TestFixture]
     class Test {
         [TestCase]

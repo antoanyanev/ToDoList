@@ -6,9 +6,9 @@ using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using Calendar.Models.DataModels;
+using ToDo.Models.DataModels;
 
-namespace Calendar.Controller {
+namespace ToDo.Controller {
     /// This is the Services controller class.
     /// </summary>
     /// <remarks>

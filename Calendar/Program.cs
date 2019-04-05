@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Calendar {
+namespace ToDo {
     static class Program {
-        /// <summary>
+        /// <summary>C:\School\ToDoList\Calendar\Program.cs
         /// The main entry point for the application.
         /// </summary>
         [MTAThread]

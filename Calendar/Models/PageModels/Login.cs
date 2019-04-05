@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Drawing;
-using Calendar.Controller;
-using Calendar.Forms;
+using ToDo.Controller;
+using ToDo.Forms;
 
-namespace Calendar {
+namespace ToDo {
     /// <summary>
     /// This is the first app page
     /// Use it to create your user and then login

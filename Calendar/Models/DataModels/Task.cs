@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calendar.Models.DataModels
+namespace ToDo.Models.DataModels
 {
     using System;
     using System.Collections.Generic;
